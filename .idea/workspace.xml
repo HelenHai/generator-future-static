@@ -2,87 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="638b47e7-e854-429e-b92f-25de4bf9a14a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/future-logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/html/static/imgs/test.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/components/Test/test.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/resources/public/-footer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/resources/public/-header.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/.babelrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/.babelrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/.bowerrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/.bowerrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.editorconfig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.eslintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitattributes" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/components/Test/Test.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/components/Test/Test.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/service/TestService.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/USAGE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/constants/action-type.es6" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/config/alias.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/config/alias.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/config/base.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/html/dev.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/utils/dev.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/config/externals.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/config/externals.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/f2eci.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/f2eci.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/utils/fetch.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/generator-trade-static.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/generator_future_static_node_modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gulpfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/gulpfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/gulpfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/reducers/index.es6" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/resources/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/index.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/template/login.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/mac.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/utils/perform-action.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/lib/readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/resources/readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/service/readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/template/readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/utils/readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/utils/readme.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/subgenerator.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/actions/test.es6" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/reducers/test.es6" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/resources/test.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/html/test.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/action/test.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/mocks/test.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/mocks/test.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/containers/test.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/entries/test.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/resources/less/test.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/containers/test2.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/src/config/vendor.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/src/config/vendor.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/webpack-dev.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/webpack.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/webpack-react-redux-cortex-es6-less/webpack.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="generator-trade-static.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -102,41 +23,7 @@
     <favorites_list name="generator-trade-static" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="385" column="6" selection-start-line="385" selection-start-column="6" selection-end-line="385" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2415459">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider editor-type-id="MarkdownPreviewEditor">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.0344827">
-              <caret line="2" column="7" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -153,6 +40,7 @@
         <option value="$PROJECT_DIR$/app/index.js" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -361,14 +249,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4044248" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22538178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22538178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -524,10 +412,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.js">
+    <entry file="file://$PROJECT_DIR$/app/templates/webpack-cortex-es6-jquery-handlebars-less/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="385" column="6" selection-start-line="385" selection-start-column="6" selection-end-line="385" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.12280702">
+          <caret line="21" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.94152045">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -537,7 +433,7 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0344827">
+        <state vertical-scroll-proportion="0.048701297">
           <caret line="2" column="7" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="7" />
           <folding />
         </state>
@@ -545,8 +441,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2415459">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.4347826">
+          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.53488374">
+          <caret line="385" column="6" selection-start-line="385" selection-start-column="6" selection-end-line="385" selection-end-column="6" />
           <folding />
         </state>
       </provider>
