@@ -59,7 +59,7 @@ module.exports = generators.Base.extend({
                 // Response is response from notification
             });
 
-            console.log(chalk.red('工具更行中...') );
+            console.log(chalk.red('工具更新中...') );
 
             selfupdate.update(packageJSON, function (error, version) {
                 if (error) throw error;
