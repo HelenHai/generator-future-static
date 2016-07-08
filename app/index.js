@@ -10,7 +10,7 @@ var fs = require('fs');
 var yosay = require('yosay');
 var notifier = require('node-notifier');
 
-var packageJson = require('../package.json');
+var packageJSON = require('../package.json');
 var selfupdate = require('selfupdate');
 
 function getGitOrigin() {
@@ -43,7 +43,7 @@ module.exports = generators.Base.extend({
         this.props = {};
 
         //检查版本，提示更新
-        selfupdate.isUpdated(packageJson, function (error, isUpdated) {
+        selfupdate.isUpdated(packageJSON, function (error, isUpdated) {
             if (error) throw error;
             if (isUpdated) return;
 
@@ -58,6 +58,8 @@ module.exports = generators.Base.extend({
             }, function (err, response) {
                 // Response is response from notification
             });
+
+            console.log(chalk.red('工具更行中...') );
 
             selfupdate.update(packageJSON, function (error, version) {
                 if (error) throw error;
@@ -81,7 +83,7 @@ module.exports = generators.Base.extend({
     prompting: function () {
         var done = this.async();
         this.log(yosay(
-            'Welcome to the sweet ' + chalk.red(packageJson.name) + ' generator!'
+            'Welcome to the sweet ' + chalk.red(packageJSON.name) + ' generator!'
         ));
 
         var prompts = [
@@ -207,6 +209,7 @@ module.exports = generators.Base.extend({
                             "babel-preset-react": "^6.1.18",
                             "babel-preset-stage-0": "^6.1.18",
                             "cortex-recombiner": "^1.0.13",
+                            "cortex-recombiner-webpack-plugin": "^1.0.3",
                             "css-loader": "0.17.0",
                             "extend": "^3.0.0",
                             "extract-text-webpack-plugin": "^0.8.2",
@@ -239,7 +242,8 @@ module.exports = generators.Base.extend({
                         },
                         "scripts": {
                             "build": "node_modules/.bin/gulp ",
-                            "dev": "node_modules/.bin/gulp dev"
+                            "dev": "node_modules/.bin/gulp dev",
+                            "start":"node_modules/.bin/gulp dev"
                         }
                     },
                     "webpack+cortex+es6+jquery+handlebars+less": {
@@ -285,7 +289,8 @@ module.exports = generators.Base.extend({
                         },
                         "scripts": {
                             "build": "node_modules/.bin/gulp ",
-                            "dev": "node_modules/.bin/gulp dev"
+                            "dev": "node_modules/.bin/gulp dev",
+                            "start":"node_modules/.bin/gulp dev"
                         }
                     }
                 }[this.props.boilerplate] || {};
@@ -395,12 +400,12 @@ module.exports = generators.Base.extend({
             case "webpack+react+redux+cortex+es6+less":
                 this.spawnCommandSync('cortex', ['install'], opt);
                 this.spawnCommandSync('npm', ['install'], opt);
-                this.spawnCommandSync('npm', ['dev'], opt);
+                this.spawnCommandSync('npm', ['start'], opt);
                 break;
             case "webpack+cortex+es6+jquery+handlebars+less":
                 this.spawnCommandSync('cortex', ['install'], opt);
                 this.spawnCommandSync('npm', ['install'], opt);
-                this.spawnCommandSync('npm', ['dev'], opt);
+                this.spawnCommandSync('npm', ['start'], opt);
                 break;
             default:
                 break;

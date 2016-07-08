@@ -1,10 +1,10 @@
 {
   "name": "generator-future-static",
-  "version": "1.0.3",
+  "version": "1.0.11",
   "description": "脚手架生成工具",
   "author": "min.xiao",
   "files": [
-
+    "app"
   ],
   "keywords": [
     "yeoman-generator",
