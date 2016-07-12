@@ -92,7 +92,8 @@ module.exports = generators.Base.extend({
                 type: 'list',
                 choices: [
                     'webpack+react+redux+cortex+es6+less',
-                    'webpack+cortex+es6+jquery+handlebars+less'
+                    'webpack+cortex+es6+jquery+handlebars+less',
+                    'module-template(jquery or react)'
                 ],
                 default: 'webpack+react+redux+cortex+es6+less',
                 message: 'boilerplate'
@@ -160,7 +161,8 @@ module.exports = generators.Base.extend({
             this.currentDir = 'webpack-react-redux-cortex-es6-less';
             var map = {
                 "webpack+react+redux+cortex+es6+less": "webpack-react-redux-cortex-es6-less",
-                "webpack+cortex+es6+jquery+handlebars+less": "webpack-cortex-es6-jquery-handlebars-less"
+                "webpack+cortex+es6+jquery+handlebars+less": "webpack-cortex-es6-jquery-handlebars-less",
+                'module-template(jquery or react)':'module-template'
             };
             this.currentDir = map[this.props.boilerplate] || 'webpack-react-redux-cortex-es6-less';
         },
@@ -292,6 +294,59 @@ module.exports = generators.Base.extend({
                             "dev": "node_modules/.bin/gulp dev",
                             "start":"node_modules/.bin/gulp dev"
                         }
+                    },
+                    "module-template(jquery or react)":{
+                        "main": "lib/",
+                        "dependencies": {
+                            "extend": "^3.0.0",
+                            "classnames": "^2.1.3",
+                            "handlebars": "^4.0.5"
+                        },
+                        "peerDependencies": {
+                        },
+                        "devDependencies": {
+                            "babel": "^6.0.15",
+                            "babel-core": "^5.8.23",
+                            "babel-loader": "^5.3.2",
+                            "babel-polyfill": "^6.8.0",
+                            "css-loader": "0.17.0",
+                            "extract-text-webpack-plugin": "^0.8.2",
+                            "glob": "^5.0.14",
+                            "gulp": "^3.9.0",
+                            "gulp-babel": "^5.3.0",
+                            "gulp-karma": "0.0.5",
+                            "gulp-less": "^3.0.3",
+                            "gulp-load-plugins": "^1.0.0-rc.1",
+                            "gulp-minify-css": "^1.2.1",
+                            "gulp-open": "^2.0.0",
+                            "gulp-rename": "^1.2.2",
+                            "gulp-util": "^3.0.6",
+                            "gulp-webpack": "^1.5.0",
+                            "handlebars-loader": "^1.3.0",
+                            "jasmine-core": "^2.3.4",
+                            "karma": "^0.13.15",
+                            "karma-chrome-launcher": "^0.2.1",
+                            "karma-cli": "^0.1.1",
+                            "karma-jasmine": "^0.3.6",
+                            "karma-webpack": "^1.7.0",
+                            "less": "^2.5.1",
+                            "less-loader": "^2.2.0",
+                            "raw-loader": "^0.5.1",
+                            "react": "^0.14.3",
+                            "react-hot-loader": "^1.3.0",
+                            "style-loader": "^0.12.3",
+                            "webpack": "^1.12.1",
+                            "url-loader": "^0.5.7",
+                            "webpack-bower-resolver": "0.0.1",
+                            "webpack-dev-server": "^1.10.1"
+                        },
+                        "scripts": {
+                            "build": "node_modules/.bin/gulp && node_modules/.bin/gulp min",
+                            "test": "karma start",
+                            "demo": "node_modules/.bin/gulp demo",
+                            "doc": "smartDoc ||node_modules/.bin/smartDoc",
+                            "start":"npm run demo"
+                        }
                     }
                 }[this.props.boilerplate] || {};
 
@@ -385,6 +440,8 @@ module.exports = generators.Base.extend({
             //this.fs.copy(this.templatePath('./' + this.currentDir ) + "/gitignore", this.destinationPath('./.gitignore'));
             this.fs.copy(this.templatePath('./' + this.currentDir) + "/**/*.*", this.destinationPath('./'));
             this.fs.copy(this.templatePath('./' + this.currentDir) + "/\.*", this.destinationPath('./'));
+            this.fs.copy(this.templatePath('./' + this.currentDir ) + "/gitignore", this.destinationPath('./.gitignore'));
+            this.fs.copy(this.templatePath('./' + this.currentDir ) + "/npmignore", this.destinationPath('./.npmignore'));
 
             //this.fs.copyTpl(this.templatePath('./' + this.currentDir + '/tpl') + "/**/*.*", this.destinationPath('./'), {AppName: this.pkg.name});
         }
@@ -404,6 +461,10 @@ module.exports = generators.Base.extend({
                 break;
             case "webpack+cortex+es6+jquery+handlebars+less":
                 this.spawnCommandSync('cortex', ['install'], opt);
+                this.spawnCommandSync('npm', ['install'], opt);
+                this.spawnCommandSync('npm', ['start'], opt);
+                break;
+            case "module-template(jquery or react)":
                 this.spawnCommandSync('npm', ['install'], opt);
                 this.spawnCommandSync('npm', ['start'], opt);
                 break;
