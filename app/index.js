@@ -345,7 +345,8 @@ module.exports = generators.Base.extend({
                             "test": "karma start",
                             "demo": "node_modules/.bin/gulp demo",
                             "doc": "smartDoc ||node_modules/.bin/smartDoc",
-                            "start":"npm run demo"
+                            "start":"npm run demo",
+                            "prepublish": " npm run build"
                         }
                     }
                 }[this.props.boilerplate] || {};
