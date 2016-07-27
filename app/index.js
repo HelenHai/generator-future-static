@@ -91,11 +91,11 @@ module.exports = generators.Base.extend({
                 name: 'boilerplate',
                 type: 'list',
                 choices: [
-                    'webpack+react+redux+cortex+es6+less',
-                    'webpack+cortex+es6+jquery+handlebars+less',
+                    'webpack+react+redux',
+                    'webpack+jquery+handlebars',
                     'module-template(jquery or react)'
                 ],
-                default: 'webpack+react+redux+cortex+es6+less',
+                default: 'webpack-react-redux',
                 message: 'boilerplate'
             }, {
                 name: 'name',
@@ -158,10 +158,10 @@ module.exports = generators.Base.extend({
     },
     writing: {
         "init": function () {
-            this.currentDir = 'webpack-react-redux-cortex-es6-less';
+            this.currentDir = 'webpack-react-redux';
             var map = {
-                "webpack+react+redux+cortex+es6+less": "webpack-react-redux-cortex-es6-less",
-                "webpack+cortex+es6+jquery+handlebars+less": "webpack-cortex-es6-jquery-handlebars-less",
+                "webpack+react+redux": "webpack-react-redux",
+                "webpack+jquery+handlebars": "webpack-jquery-handlebars",
                 'module-template(jquery or react)':'module-template'
             };
             this.currentDir = map[this.props.boilerplate] || 'webpack-react-redux-cortex-es6-less';
@@ -174,33 +174,28 @@ module.exports = generators.Base.extend({
             var currentPkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
             var pkg_json = {
-                    "webpack+react+redux+cortex+es6+less": {
+                    "webpack+react+redux": {
+                        "peerDependencies": {},
                         "dependencies": {
                             "babel-polyfill": "^6.3.14",
                             "bootstrap": "^3.3.6",
                             "classnames": "^2.2.0",
-                            "eagle-ui": "^1.0.1",
-                            "eg-tools": "^2.0.1",
+                            "eagle-ui": "^1.4.5",
                             "es5-shim": "^4.5.9",
                             "extend": "^3.0.0",
-                            "handlebars": "^4.0.5",
                             "history": "^1.13.1",
                             "immutable": "^3.7.5",
-                            "jquery": "^2.2.4",
                             "lodash": "^3.10.1",
                             "phoenix-styles": "^0.1.5",
                             "phoenix-ui": "^0.1.3",
-                            "postcss-color-rebeccapurple": "^2.0.0",
                             "react": "^0.14.3",
                             "react-dom": "~0.14.8",
                             "react-redux": "^4.0.0",
                             "react-router": "^1.0.0",
                             "redux": "^3.0.4",
-                            "redux-2way-binding": "0.0.8",
                             "redux-thunk": "^1.0.0",
                             "whatwg-fetch": "^0.10.1"
                         },
-                        "peerDependencies": {},
                         "devDependencies": {
                             "autoprefixer": "^6.3.7",
                             "autoprefixer-loader": "^3.2.0",
@@ -212,6 +207,7 @@ module.exports = generators.Base.extend({
                             "babel-preset-stage-0": "^6.1.18",
                             "cortex-recombiner": "^1.0.13",
                             "cortex-recombiner-webpack-plugin": "^1.0.3",
+                            "cross-env": "^2.0.0",
                             "css-loader": "0.17.0",
                             "extend": "^3.0.0",
                             "extract-text-webpack-plugin": "^0.8.2",
@@ -230,8 +226,11 @@ module.exports = generators.Base.extend({
                             "gulp-util": "^3.0.6",
                             "gulp-webpack": "^1.5.0",
                             "handlebars-loader": "^1.3.0",
+                            "html-webpack-plugin": "^2.22.0",
                             "less": "^2.5.1",
                             "less-loader": "^2.2.0",
+                            "postcss-color-rebeccapurple": "^2.0.0",
+                            "postcss-initial": "^1.5.2",
                             "postcss-loader": "^0.9.1",
                             "raw-loader": "^0.5.1",
                             "react-hot-loader": "^1.3.0",
@@ -243,26 +242,34 @@ module.exports = generators.Base.extend({
                             "webpack-dev-server": "^1.10.1"
                         },
                         "scripts": {
+                            "demo": "cross-env NODE_ENV=development node_modules/.bin/gulp ",
                             "build": "node_modules/.bin/gulp ",
                             "dev": "node_modules/.bin/gulp dev",
-                            "start":"node_modules/.bin/gulp dev"
+                            "start": "node_modules/.bin/gulp dev"
                         }
                     },
-                    "webpack+cortex+es6+jquery+handlebars+less": {
+                    "webpack+jquery+handlebars": {
+                        "peerDependencies": {},
                         "dependencies": {
+                            "babel-polyfill": "^6.3.14",
                             "bootstrap": "^3.3.6",
                             "handlebars": "^4.0.5",
                             "jq-modal": "^0.1.3",
-                            "jquery": "^2.2.4"
+                            "jquery": "^2.2.4",
+                            "underscore": "^1.8.3",
+                            "es5-shim": "^4.5.9"
                         },
-                        "peerDependencies": {},
                         "devDependencies": {
+                            "autoprefixer": "^6.3.7",
+                            "autoprefixer-loader": "^3.2.0",
                             "babel": "^6.0.15",
                             "babel-core": "^5.8.23",
                             "babel-loader": "^5.3.2",
                             "babel-polyfill": "^6.8.0",
-                            "cortex-recombiner": "^1.0.13",
+                            "cortex-recombiner-webpack-plugin": "^1.0.3",
+                            "cross-env": "^2.0.0",
                             "css-loader": "0.17.0",
+                            "ejs-loader": "^0.3.0",
                             "extend": "^3.0.0",
                             "extract-text-webpack-plugin": "^0.8.2",
                             "file-loader": "^0.9.0",
@@ -275,11 +282,16 @@ module.exports = generators.Base.extend({
                             "gulp-minify-css": "^1.2.1",
                             "gulp-open": "^2.0.0",
                             "gulp-rename": "^1.2.2",
+                            "gulp-rimraf": "^0.2.0",
                             "gulp-util": "^3.0.6",
                             "gulp-webpack": "^1.5.0",
                             "handlebars-loader": "^1.3.0",
+                            "html-webpack-plugin": "^2.22.0",
                             "less": "^2.5.1",
                             "less-loader": "^2.2.0",
+                            "postcss-color-rebeccapurple": "^2.0.0",
+                            "postcss-initial": "^1.5.2",
+                            "postcss-loader": "^0.9.1",
                             "raw-loader": "^0.5.1",
                             "react-hot-loader": "^1.3.0",
                             "run-sequence": "^1.2.1",
@@ -290,9 +302,10 @@ module.exports = generators.Base.extend({
                             "webpack-dev-server": "^1.10.1"
                         },
                         "scripts": {
-                            "build": "node_modules/.bin/gulp ",
-                            "dev": "node_modules/.bin/gulp dev",
-                            "start":"node_modules/.bin/gulp dev"
+                            "demo": "cross-env NODE_ENV=development node_modules/.bin/gulp ",
+                            "build": "cross-env NODE_ENV=production node_modules/.bin/gulp ",
+                            "dev": "cross-env NODE_ENV=development node_modules/.bin/gulp dev",
+                            "start": "cross-env NODE_ENV=development node_modules/.bin/gulp dev"
                         }
                     },
                     "module-template(jquery or react)":{
@@ -398,7 +411,7 @@ module.exports = generators.Base.extend({
                             },
                             scripts: {}
                         },
-                        "webpack+cortex+es6+jquery+handlebars+less": {
+                        "webpack+jquery+handlebars": {
                             devDependencies: {},
                             dependencies: {
                                 "hippo": "^1.2.15"
@@ -455,13 +468,13 @@ module.exports = generators.Base.extend({
         };
 
         switch (this.props.boilerplate) {
-            case "webpack+react+redux+cortex+es6+less":
-                this.spawnCommandSync('cortex', ['install'], opt);
+            case "webpack+react+redux":
+                //this.spawnCommandSync('cortex', ['install'], opt);
                 this.spawnCommandSync('npm', ['install'], opt);
                 this.spawnCommandSync('npm', ['start'], opt);
                 break;
-            case "webpack+cortex+es6+jquery+handlebars+less":
-                this.spawnCommandSync('cortex', ['install'], opt);
+            case "webpack+jquery+handlebars":
+                //this.spawnCommandSync('cortex', ['install'], opt);
                 this.spawnCommandSync('npm', ['install'], opt);
                 this.spawnCommandSync('npm', ['start'], opt);
                 break;
