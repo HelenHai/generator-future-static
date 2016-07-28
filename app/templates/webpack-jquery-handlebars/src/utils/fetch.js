@@ -24,7 +24,7 @@ function isMock() {
 function fetch(url,options={}){
     if(isMock() ){
         url = url.split('?');
-        url= (location.pathname.substr(0,location.pathname.lastIndexOf('/')+1))+'mocks'+url[0]+'.json';
+        url= (location.pathname.substr(0,location.pathname.lastIndexOf('/')+1))+'mocks'+url[0].toLowerCase()+'.json';
         options.type = 'GET';
         options.method = 'GET';
     }
