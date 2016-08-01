@@ -2,7 +2,7 @@
 
 ### src
 
-- `action` 对应于每个页面的入口，所有执行操作都将在此入口处被执行，action中必须配合utils包下的perform-action使用，用于区分环境对url的替换
+- `action` 对应于每个页面的入口，所有执行操作都将在此入口处被执行
 
 ```js
 
@@ -75,15 +75,29 @@
 
 ### dist
 
+本地调试可以引入dev.js在页面中处理页面中重复的部分
+
+## 命名规范
+
+* Class命名规范为首字母大写，之后驼峰式。
+* `action` 和 `html` 文件名应保持一致。
+* 其他类型的文件命名规则为单词之间应以（-）连接，所有单词应保持小写方式。
+
+## 入口
+
+打包入口为action文件夹，对应生成页面级的css和js
+
+## 页面预览
+
+访问html页面 h5.dianping.com/app/appName/path/to/file.html		
+
+访问其余静态资源 www.dpfile.com/app/appName/path/to/file.min.md5.ext		
+
+appName 指的是package.json中的name字段 			
+
+beta环境对应的域名分别为 h5.51ping.com 和 s1.51ping.com		
+
 打包后生成的文件
-
-## 使用
-
-- 下载此项目至本地，修改项目名称和package.json里的信息；
-- git remote rm origin
-- git remote add origin {你的仓库地址}  例如：git remote add origin git@code.dianpingoa.com:pc-trade-f2e/apollo-template-static.git
-- git fetch
-- git pull origin master
 
 ## Command
 
@@ -97,6 +111,8 @@
 ## 发布方式
 
 点评内部通过dianpingoa中的ci方式发布，ci类型请选择 ** peon_static **
+
+注：关于peon_static 发布方式请至：[http://wiki.sankuai.com/pages/viewpage.action?pageId=531468248 ](http://wiki.sankuai.com/pages/viewpage.action?pageId=531468248)   查看文档。
 
 ## 回滚
 
@@ -118,7 +134,6 @@
 
 ### 前端资源调试
 
-- 所有action文件需要在src/index.js中被引入
 - 执行npm(cnpm) install
 - 执行cortex install
 - 执行npm run dev 启动本地环境，预览页面
