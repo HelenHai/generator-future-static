@@ -208,7 +208,6 @@ module.exports = generators.Base.extend({
                             "babel-preset-stage-0": "^6.1.18",
                             "cortex-recombiner": "^1.0.13",
                             "cortex-recombiner-webpack-plugin": "^1.0.3",
-                            "cross-env": "^2.0.0",
                             "css-loader": "0.17.0",
                             "extend": "^3.0.0",
                             "extract-text-webpack-plugin": "^0.8.2",
@@ -243,7 +242,7 @@ module.exports = generators.Base.extend({
                             "webpack-dev-server": "^1.10.1"
                         },
                         "scripts": {
-                            "demo": "cross-env NODE_ENV=development node_modules/.bin/gulp ",
+                            "demo": "node_modules/.bin/gulp ",
                             "build": "node_modules/.bin/gulp ",
                             "dev": "node_modules/.bin/gulp dev",
                             "start": "node_modules/.bin/gulp dev"
@@ -268,7 +267,6 @@ module.exports = generators.Base.extend({
                             "babel-loader": "^5.3.2",
                             "babel-polyfill": "^6.8.0",
                             "cortex-recombiner-webpack-plugin": "^1.0.3",
-                            "cross-env": "^2.0.0",
                             "css-loader": "0.17.0",
                             "ejs-loader": "^0.3.0",
                             "extend": "^3.0.0",
@@ -303,10 +301,10 @@ module.exports = generators.Base.extend({
                             "webpack-dev-server": "^1.10.1"
                         },
                         "scripts": {
-                            "demo": "cross-env NODE_ENV=development node_modules/.bin/gulp ",
-                            "build": "cross-env NODE_ENV=production node_modules/.bin/gulp ",
-                            "dev": "cross-env NODE_ENV=development node_modules/.bin/gulp dev",
-                            "start": "cross-env NODE_ENV=development node_modules/.bin/gulp dev"
+                            "demo": "node_modules/.bin/gulp ",
+                            "build": "node_modules/.bin/gulp ",
+                            "dev": "node_modules/.bin/gulp dev",
+                            "start": "node_modules/.bin/gulp dev"
                         }
                     },
                     "module-template(jquery or react)":{
