@@ -91,11 +91,11 @@ module.exports = generators.Base.extend({
                 name: 'boilerplate',
                 type: 'list',
                 choices: [
-                    'webpack+react+redux',
-                    'webpack+jquery+handlebars',
+                    'webpack+react+redux+cortex',
+                    'webpack+jquery+handlebars+cortex',
                     'module-template(jquery or react)'
                 ],
-                default: 'webpack-react-redux',
+                default: 'webpack+react+redux+cortex',
                 message: 'boilerplate'
             }, {
                 name: 'name',
@@ -160,11 +160,11 @@ module.exports = generators.Base.extend({
         "init": function () {
             this.currentDir = 'webpack-react-redux';
             var map = {
-                "webpack+react+redux": "webpack-react-redux",
-                "webpack+jquery+handlebars": "webpack-jquery-handlebars",
+                "webpack+react+redux+cortex": "webpack-react-redux",
+                "webpack+jquery+handlebars+cortex": "webpack-jquery-handlebars",
                 'module-template(jquery or react)':'module-template'
             };
-            this.currentDir = map[this.props.boilerplate] || 'webpack+react+redux';
+            this.currentDir = map[this.props.boilerplate] || 'webpack+react+redux+cortex';
         },
         /*
          * 生成 package.json
@@ -174,7 +174,7 @@ module.exports = generators.Base.extend({
             var currentPkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
             var pkg_json = {
-                    "webpack+react+redux": {
+                    "webpack+react+redux+cortex": {
                         "peerDependencies": {},
                         "dependencies": {
                             "babel-polyfill": "^6.3.14",
@@ -248,7 +248,7 @@ module.exports = generators.Base.extend({
                             "start": "node_modules/.bin/gulp dev"
                         }
                     },
-                    "webpack+jquery+handlebars": {
+                    "webpack+jquery+handlebars+cortex": {
                         "peerDependencies": {},
                         "dependencies": {
                             "babel-polyfill": "^6.3.14",
@@ -398,11 +398,11 @@ module.exports = generators.Base.extend({
          *
          * */
         "cortex_json": function () {
-            //if (this.props.boilerplate.search('cortex') != -1) {
+            if (this.props.boilerplate.search('cortex') != -1) {
                 var currentCortex = this.fs.readJSON(this.destinationPath('cortex.json'), {});
 
                 var cortex_json = {
-                        "webpack+react+redux": {
+                        "webpack+react+redux+cortex": {
                             devDependencies: {},
                             dependencies: {
                                 "hippo": "^1.2.15",
@@ -410,7 +410,7 @@ module.exports = generators.Base.extend({
                             },
                             scripts: {}
                         },
-                        "webpack+jquery+handlebars": {
+                        "webpack+jquery+handlebars+cortex": {
                             devDependencies: {},
                             dependencies: {
                                 "hippo": "^1.2.15"
@@ -443,7 +443,7 @@ module.exports = generators.Base.extend({
 
                 // Let's extend package.json so we're not overwriting user previous fields
                 this.fs.writeJSON(this.destinationPath('cortex.json'), cortex);
-            //}
+            }
         },
         /*
          * 生成 README.md
@@ -467,12 +467,12 @@ module.exports = generators.Base.extend({
         };
 
         switch (this.props.boilerplate) {
-            case "webpack+react+redux":
+            case "webpack+react+redux+cortex":
                 //this.spawnCommandSync('cortex', ['install'], opt);
                 this.spawnCommandSync('npm', ['install'], opt);
                 this.spawnCommandSync('npm', ['start'], opt);
                 break;
-            case "webpack+jquery+handlebars":
+            case "webpack+jquery+handlebars+cortex":
                 //this.spawnCommandSync('cortex', ['install'], opt);
                 this.spawnCommandSync('npm', ['install'], opt);
                 this.spawnCommandSync('npm', ['start'], opt);
