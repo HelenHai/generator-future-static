@@ -164,7 +164,7 @@ module.exports = generators.Base.extend({
                 "webpack+jquery+handlebars": "webpack-jquery-handlebars",
                 'module-template(jquery or react)':'module-template'
             };
-            this.currentDir = map[this.props.boilerplate] || 'webpack-react-redux-cortex-es6-less';
+            this.currentDir = map[this.props.boilerplate] || 'webpack+react+redux';
         },
         /*
          * 生成 package.json
@@ -398,11 +398,11 @@ module.exports = generators.Base.extend({
          *
          * */
         "cortex_json": function () {
-            if (this.props.boilerplate.search('cortex') != -1) {
+            //if (this.props.boilerplate.search('cortex') != -1) {
                 var currentCortex = this.fs.readJSON(this.destinationPath('cortex.json'), {});
 
                 var cortex_json = {
-                        "webpack+react+redux+cortex+es6+less": {
+                        "webpack+react+redux": {
                             devDependencies: {},
                             dependencies: {
                                 "hippo": "^1.2.15",
@@ -443,7 +443,7 @@ module.exports = generators.Base.extend({
 
                 // Let's extend package.json so we're not overwriting user previous fields
                 this.fs.writeJSON(this.destinationPath('cortex.json'), cortex);
-            }
+            //}
         },
         /*
          * 生成 README.md
