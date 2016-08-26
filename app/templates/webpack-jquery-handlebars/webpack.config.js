@@ -9,6 +9,7 @@ var alias = require('./src/config/alias.json');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CortexRecombinerPlugin=require('cortex-recombiner-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var es3ifyPlugin = require('es3ify-webpack-plugin');
 //?presets[]=stage-0,presets[]=react,presets[]=es2015
 
 //var headerTpl = require('./src/html/test.js');
@@ -164,7 +165,8 @@ var webpackConfig = {
             names: setCommonsChuck(),
             minChunks: Infinity
 
-        })
+        }),
+        new es3ifyPlugin()
     ]/*.concat(htmlPlugin)*/
 };
 
