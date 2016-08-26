@@ -260,6 +260,7 @@ module.exports = generators.Base.extend({
                             "es5-shim": "^4.5.9"
                         },
                         "devDependencies": {
+                            "es3ify-webpack-plugin": "0.0.1",
                             "autoprefixer": "^6.3.7",
                             "autoprefixer-loader": "^3.2.0",
                             "babel": "^6.0.15",
@@ -308,7 +309,6 @@ module.exports = generators.Base.extend({
                         }
                     },
                     "module-template(jquery or react)":{
-                        "main": "lib/",
                         "dependencies": {
                             "extend": "^3.0.0",
                             "classnames": "^2.1.3",
@@ -316,6 +316,7 @@ module.exports = generators.Base.extend({
                         },
                         "peerDependencies": {
                         },
+                        "main": "lib/",
                         "devDependencies": {
                             "babel": "^6.0.15",
                             "babel-core": "^5.8.23",
