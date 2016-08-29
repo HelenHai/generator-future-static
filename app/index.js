@@ -316,13 +316,13 @@ module.exports = generators.Base.extend({
                         },
                         "peerDependencies": {
                         },
-                        "main": "lib/",
                         "devDependencies": {
                             "babel": "^6.0.15",
                             "babel-core": "^5.8.23",
                             "babel-loader": "^5.3.2",
                             "babel-polyfill": "^6.8.0",
                             "css-loader": "0.17.0",
+                            "es3ify-webpack-plugin": "0.0.1",
                             "extract-text-webpack-plugin": "^0.8.2",
                             "glob": "^5.0.14",
                             "gulp": "^3.9.0",
@@ -353,6 +353,7 @@ module.exports = generators.Base.extend({
                             "webpack-bower-resolver": "0.0.1",
                             "webpack-dev-server": "^1.10.1"
                         },
+                        "main": "lib/",
                         "scripts": {
                             "build": "node_modules/.bin/gulp && node_modules/.bin/gulp min",
                             "test": "karma start",

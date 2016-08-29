@@ -1,13 +1,11 @@
-/**
- * Created by mac on 15/9/6.
- */
 var path = require('path');
 var webpack = require('webpack');
 var config = require('../package.json');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var es3ifyPlugin = require('es3ify-webpack-plugin');
 
 module.exports ={
-    entry:[path.join(process.cwd(),'src/index.js')],
+    entry:{index:[path.join(process.cwd(),'src/index.js')]},
     resolve:{
         modulesDirectories: [
             'node_modules',
@@ -21,6 +19,12 @@ module.exports ={
         filename:config.name+'.js'
     },
     externals:[{
+        "jquery": {
+            "root": "$",
+            "commonjs2": "jquery",
+            "commonjs": "jquery",
+            "amd": "jquery"
+        },
         'react': {
             root: 'React',
             commonjs2: 'react',
@@ -55,11 +59,24 @@ module.exports ={
             },
             {
                 test: /\.less$/,
-                loader: "style-loader!css-loader!less-loader"
+                //style-loader!css-loader!less-loader
+                loader: ExtractTextPlugin.extract("style-loader","css-loader!less-loader")
             },
-            { test: /\.html$/, loader: "handlebars-loader" },
             {
-                test: /\.(png|jpg)$/,
+                test: /\.css/,
+                //style-loader!css-loader!less-loader
+                loader: ExtractTextPlugin.extract("css?-restructuring")
+            },
+            {
+                test: /\.html$/,
+                loader: "handlebars-loader"
+            },
+            {
+                test   : /\.(mp3|ogg|wav|swf)\??.*$/,
+                loader : 'file-loader'
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
                 loader: 'url?limit=35000'
             }/*,
              {
@@ -69,6 +86,20 @@ module.exports ={
         ]
     },
     plugins: [
+        new ExtractTextPlugin(config.name+".css", {
+            disable: false,
+            allChunks: true
+        }),
+        new es3ifyPlugin(),
+        new webpack.ProvidePlugin({
+            $:      "jquery",
+            jQuery: "jquery"
+        })/*,
+         new webpack.DefinePlugin({
+         'process.env':{
+         'NODE_ENV': JSON.stringify('production')
+         }
+         })*/
         //new webpack.optimize.CommonsChunkPlugin('common.js')
         //new ExtractTextPlugin(path.join(config.name+'.css'))
     ]
