@@ -20,7 +20,7 @@
 	#打包	
 	npm run build	
 	#例子演示	
-	npm run demo	
+	npm start
 ```
 
 

@@ -181,7 +181,7 @@ module.exports = generators.Base.extend({
                             "bootstrap": "^3.3.6",
                             "classnames": "^2.2.0",
                             "eagle-ui": "^1.4.5",
-                            "eg-tools": "^5.0.1",
+                            "eg-tools": "^6.0.1",
                             "es5-shim": "^4.5.9",
                             "extend": "^3.0.0",
                             "history": "^1.13.1",
@@ -195,7 +195,8 @@ module.exports = generators.Base.extend({
                             "react-router": "^1.0.0",
                             "redux": "^3.0.4",
                             "redux-thunk": "^1.0.0",
-                            "whatwg-fetch": "^0.10.1"
+                            "whatwg-fetch": "^0.10.1",
+                            "console-polyfill": "^0.2.3"
                         },
                         "devDependencies": {
                             "autoprefixer": "^6.3.7",
@@ -239,7 +240,13 @@ module.exports = generators.Base.extend({
                             "url-loader": "^0.5.7",
                             "webpack": "^1.12.1",
                             "webpack-bower-resolver": "0.0.1",
-                            "webpack-dev-server": "^1.10.1"
+                            "webpack-dev-server": "^1.10.1",
+                            "babel-eslint": "^6.1.2",
+                            "es3ify-loader": "^0.2.0",
+                            "eslint": "^3.4.0",
+                            "eslint-loader": "^1.5.0",
+                            "eslint-plugin-react": "^6.2.0",
+                            "es3ify-webpack-plugin": "0.0.1"
                         },
                         "scripts": {
                             "demo": "node_modules/.bin/gulp ",
@@ -309,6 +316,7 @@ module.exports = generators.Base.extend({
                         }
                     },
                     "module-template(jquery or react)":{
+                        "main": "lib/",
                         "dependencies": {
                             "extend": "^3.0.0",
                             "classnames": "^2.1.3",
@@ -351,9 +359,14 @@ module.exports = generators.Base.extend({
                             "webpack": "^1.12.1",
                             "url-loader": "^0.5.7",
                             "webpack-bower-resolver": "0.0.1",
-                            "webpack-dev-server": "^1.10.1"
+                            "webpack-dev-server": "^1.10.1",
+                            "es3ify-loader": "^0.2.0",
+                            "eslint": "^3.4.0",
+                            "eslint-loader": "^1.5.0",
+                            "babel-eslint": "^6.1.2",
+                            "eslint-plugin-react": "^6.2.0",
+                            "del": "^2.2.2"
                         },
-                        "main": "lib/",
                         "scripts": {
                             "build": "node_modules/.bin/gulp && node_modules/.bin/gulp min",
                             "test": "karma start",
@@ -386,6 +399,10 @@ module.exports = generators.Base.extend({
                 },
                 "homepage": "http://" + getHomeUrl(this.props.repo)
             }, currentPkg);
+
+            if(pkg_json.main){
+                this.pkg.main = pkg_json.main;
+            }
 
             // Combine the keywords
             if (this.props.keywords) {

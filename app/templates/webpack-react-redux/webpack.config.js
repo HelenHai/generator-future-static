@@ -5,10 +5,11 @@ var extend = require('extend');
 var entry = require('./src/config/vendor');
 var externals = require('./src/config/externals');
 var config = require('./src/config/base.config');
-var alias = require('./src/config/alias.json');
+var alias = require('./src/config/alias');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CortexRecombinerPlugin=require('cortex-recombiner-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var es3ifyPlugin = require('es3ify-webpack-plugin');
 
 var setExternals= function() {
     var external=externals;
@@ -80,7 +81,7 @@ var webpackConfig = {
         loaders: [
             {
                 test: /\.(jsx|es6)$/,
-                loaders: ['babel'],
+                loaders: ['eslint-loader','babel'],
                 exclude: /node_modules/
             },
             {
@@ -173,6 +174,9 @@ if(config.env!='beta'&& config.env!='dev'){
                 'NODE_ENV': JSON.stringify('production')
             }
         })
+    );
+    webpackConfig.plugins.push(
+        new es3ifyPlugin()
     );
     webpackConfig.plugins.push(
         new webpack.optimize.DedupePlugin()

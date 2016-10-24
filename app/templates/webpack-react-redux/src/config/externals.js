@@ -1,4 +1,4 @@
-[{
+module.exports =[{
   "jquery": {
     "root": "$",
     "commonjs2": "jquery",
@@ -11,4 +11,4 @@
     "commonjs": "",
     "amd": ""
   }
-}]
+}];

@@ -4,8 +4,12 @@ var config = require('../package.json');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var es3ifyPlugin = require('es3ify-webpack-plugin');
 
+var ent = {
+    example:[path.join(process.cwd(),'example/src/index.js') ]
+};
+ent[config.name] =[path.join(process.cwd(),'src/index.js')];
 module.exports ={
-    entry:{index:[path.join(process.cwd(),'src/index.js')]},
+    entry:ent,
     resolve:{
         modulesDirectories: [
             'node_modules',
@@ -16,7 +20,7 @@ module.exports ={
     output:{
         libraryTarget: 'umd',
         path:path.join(process.cwd(),'dist'),
-        filename:config.name+'.js'
+        filename:'[name].js'
     },
     externals:[{
         "jquery": {
@@ -54,7 +58,7 @@ module.exports ={
         loaders:[
             {
                 test: /\.js$/,
-                loaders: ['babel'],
+                loaders: ['eslint-loader','babel'],
                 exclude: /node_modules/
             },
             {

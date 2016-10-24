@@ -5,6 +5,7 @@ var Server = require('karma').Server;
 var webpackServer = require('./webpack/webpack-dev.config');
 var webpackConfig = require('./webpack/webpack.config');
 var open = require('gulp-open');
+var del = require('del');
 
 var babel = require('gulp-babel');
 
@@ -47,7 +48,7 @@ gulp.task('require-webpack', function(done) {
 gulp.task('min-webpack', function(done) {
 
     var wbpk = Object.create(webpackConfig);
-    wbpk.output.filename = config.outputName+'.min.js';
+    wbpk.output.filename = config.name+'.min.js';
     wbpk.plugins.push(new webpack.optimize.UglifyJsPlugin());
 
     webpack(wbpk).run(function(err, stats) {
@@ -69,7 +70,14 @@ gulp.task('watch', function () {
     gulp.watch(['./lib/**/*.*'], ['demo']);
 });
 
-gulp.task('default', ['babel','require-webpack'/*, 'html', 'asset'*/]);
+gulp.task('copy',  function(done) {
+    gulp.src(__dirname+'/dist/example.js')
+        .pipe(gulp.dest(__dirname+'/example/dist/'));
+    del([__dirname+'/dist/example.js'],done);
+});
+
+
+gulp.task('default', ['babel','require-webpack']);
 gulp.task('test',['karma']);
 gulp.task('demo', ['hot','open']);
-gulp.task('min',['min-webpack']);
+gulp.task('min',['min-webpack','copy']);
