@@ -18,6 +18,7 @@ module.exports= function(){
             ar.unshift('webpack-dev-server/client?http://127.0.0.1:'+devPort , "webpack/hot/dev-server");
         }
     }
+    wbpk.externals = [];
     wbpk.plugins.push(
         new webpack.HotModuleReplacementPlugin()
     );
