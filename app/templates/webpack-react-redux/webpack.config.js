@@ -78,10 +78,17 @@ var webpackConfig = {
         alias:extend({},alias ||{})
     },
     module: {
+        preLoaders: [
+            {
+                test: /\.(jsx|es6|js)$/,
+                loaders: ['eslint-loader'],
+                exclude: /node_modules/
+            }
+        ],
         loaders: [
             {
                 test: /\.(jsx|es6)$/,
-                loaders: ['eslint-loader','babel'],
+                loaders: ['babel'],
                 exclude: /node_modules/
             },
             {

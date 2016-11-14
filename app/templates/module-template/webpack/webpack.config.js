@@ -55,10 +55,17 @@ module.exports ={
         }
     }],
     module:{
+        preLoaders: [
+            {
+                test: /\.(jsx|es6|js)$/,
+                loaders: ['eslint-loader'],
+                exclude: /node_modules/
+            }
+        ],
         loaders:[
             {
                 test: /\.js$/,
-                loaders: ['eslint-loader','babel'],
+                loaders: ['babel'],
                 exclude: /node_modules/
             },
             {
