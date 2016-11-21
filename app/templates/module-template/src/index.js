@@ -1,4 +1,6 @@
-import '../css/index.less';
-window.show=function(){
-    alert('demo test');
+import '../css/index.less'
+let show=function(){
+    alert('demo test')
 }
+window.show = show
+export default show
