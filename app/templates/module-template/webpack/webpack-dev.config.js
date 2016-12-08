@@ -15,7 +15,7 @@ module.exports= function(){
         var ar = wbpk.entry[key];
 
         if (key != "common" && key!='dev') {
-            ar.unshift('webpack-dev-server/client?http://127.0.0.1:'+devPort , "webpack/hot/dev-server");
+            ar.unshift('webpack-dev-server/client?http://0.0.0.0:'+devPort , "webpack/hot/dev-server");
         }
     }
     wbpk.externals = [];
@@ -47,7 +47,7 @@ module.exports= function(){
         stats: {
             colors: true
         }
-    }).listen(devPort, "127.0.0.1", function (err) {
+    }).listen(devPort, "0.0.0.0", function (err) {
             if (err) throw new gutil.PluginError("webpack-dev-server", err);
 
         });

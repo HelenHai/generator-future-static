@@ -199,6 +199,7 @@ module.exports = generators.Base.extend({
                             "console-polyfill": "^0.2.3"
                         },
                         "devDependencies": {
+                            "internal-ip": "^1.2.0",
                             "autoprefixer": "^6.3.7",
                             "autoprefixer-loader": "^3.2.0",
                             "babel": "^6.0.15",
@@ -325,6 +326,7 @@ module.exports = generators.Base.extend({
                         "peerDependencies": {
                         },
                         "devDependencies": {
+                            "internal-ip": "^1.2.0",
                             "babel": "^6.0.15",
                             "babel-core": "^5.8.23",
                             "babel-loader": "^5.3.2",
