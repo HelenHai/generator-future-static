@@ -93,7 +93,8 @@ module.exports = generators.Base.extend({
                 choices: [
                     'webpack+react+redux+cortex',
                     'webpack+jquery+handlebars+cortex',
-                    'module-template(jquery or react)'
+                    'module-template(jquery or react)',
+                    'module-ts-template'
                 ],
                 default: 'webpack+react+redux+cortex',
                 message: 'boilerplate'
@@ -162,7 +163,8 @@ module.exports = generators.Base.extend({
             var map = {
                 "webpack+react+redux+cortex": "webpack-react-redux",
                 "webpack+jquery+handlebars+cortex": "webpack-jquery-handlebars",
-                'module-template(jquery or react)':'module-template'
+                'module-template(jquery or react)':'module-template',
+                "module-ts-template":'module-ts-template'
             };
             this.currentDir = map[this.props.boilerplate] || 'webpack+react+redux+cortex';
         },
@@ -377,6 +379,75 @@ module.exports = generators.Base.extend({
                             "start":"npm run demo",
                             "prepublish": " npm run build"
                         }
+                    },
+                    "module-ts-template":{
+                        "main": "lib/",
+                        "dependencies": {
+                            "@types/react": "^0.14.55",
+                            "@types/react-dom": "^0.14.19",
+                            "classnames": "^2.1.3",
+                            "extend": "^3.0.0",
+                            "react": "^15.4.1",
+                            "react-dom": "^15.4.1"
+                        },
+                        "peerDependencies": {
+                        },
+                        "devDependencies": {
+                            "awesome-typescript-loader": "^3.0.0-beta.17",
+                            "babel": "^6.0.15",
+                            "babel-core": "^5.8.23",
+                            "babel-eslint": "^6.1.2",
+                            "babel-loader": "^5.3.2",
+                            "babel-polyfill": "^6.8.0",
+                            "css-loader": "0.17.0",
+                            "del": "^2.2.2",
+                            "es3ify-loader": "^0.2.0",
+                            "es3ify-webpack-plugin": "0.0.1",
+                            "eslint": "^3.4.0",
+                            "eslint-loader": "^1.5.0",
+                            "eslint-plugin-react": "^6.2.0",
+                            "extract-text-webpack-plugin": "^0.8.2",
+                            "glob": "^5.0.14",
+                            "gulp": "^3.9.0",
+                            "gulp-babel": "^5.3.0",
+                            "gulp-karma": "0.0.5",
+                            "gulp-less": "^3.0.3",
+                            "gulp-load-plugins": "^1.0.0-rc.1",
+                            "gulp-minify-css": "^1.2.1",
+                            "gulp-open": "^2.0.0",
+                            "gulp-rename": "^1.2.2",
+                            "gulp-util": "^3.0.6",
+                            "gulp-webpack": "^1.5.0",
+                            "handlebars-loader": "^1.3.0",
+                            "internal-ip": "^1.2.0",
+                            "jasmine-core": "^2.3.4",
+                            "karma": "^0.13.15",
+                            "karma-chrome-launcher": "^0.2.1",
+                            "karma-cli": "^0.1.1",
+                            "karma-jasmine": "^0.3.6",
+                            "karma-webpack": "^1.7.0",
+                            "less": "^2.5.1",
+                            "less-loader": "^2.2.0",
+                            "raw-loader": "^0.5.1",
+                            "react": "^0.14.3",
+                            "react-hot-loader": "^1.3.0",
+                            "source-map-loader": "^0.1.5",
+                            "style-loader": "^0.12.3",
+                            "ts-loader": "^1.3.2",
+                            "typescript": "^2.1.4",
+                            "url-loader": "^0.5.7",
+                            "webpack": "^1.12.1",
+                            "webpack-bower-resolver": "0.0.1",
+                            "webpack-dev-server": "^1.10.1"
+                        },
+                        "scripts": {
+                            "build": "tsc && node_modules/.bin/gulp && node_modules/.bin/gulp min",
+                            "test": "karma start",
+                            "demo": "node_modules/.bin/gulp demo",
+                            "doc": "smartDoc ||node_modules/.bin/smartDoc",
+                            "start": "npm run demo",
+                            "prepublish": " npm run build"
+                        }
                     }
                 }[this.props.boilerplate] || {};
 
@@ -499,6 +570,10 @@ module.exports = generators.Base.extend({
                 this.spawnCommandSync('npm', ['start'], opt);
                 break;
             case "module-template(jquery or react)":
+                this.spawnCommandSync('npm', ['install'], opt);
+                this.spawnCommandSync('npm', ['start'], opt);
+                break;
+            case "module-ts-template":
                 this.spawnCommandSync('npm', ['install'], opt);
                 this.spawnCommandSync('npm', ['start'], opt);
                 break;
