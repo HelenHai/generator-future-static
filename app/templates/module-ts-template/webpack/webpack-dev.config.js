@@ -43,6 +43,7 @@ module.exports= function(){
         publicPath: "/dist/",
         contentBase:path.join(process.cwd(),'example/'),
         hot: true,
+        inline:true,
         historyApiFallback: true,
         port: devPort,
         stats: {

@@ -10,7 +10,7 @@ module.exports= function(){
     var devPort = config.devPort;
     var wbpk = Object.create(webpackConfig);
 
-    wbpk.devtool = 'eval';
+    wbpk.devtool = 'source-map';
     for (var key in wbpk.entry) {
         var ar = wbpk.entry[key];
 
@@ -62,6 +62,7 @@ module.exports= function(){
         publicPath: '',
         contentBase: config.html,
         hot: true,
+        inline:true,
         historyApiFallback: true,
         port: devPort,
         stats: {
