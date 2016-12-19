@@ -1,4 +1,4 @@
-import Hello from '../../src/Hello.ts';
+import Hello from '../../src/Hello';
 
 
 const hello = new Hello();

@@ -5,7 +5,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var es3ifyPlugin = require('es3ify-webpack-plugin');
 
 var ent = {
-    example:[path.join(process.cwd(),'example/src/index.ts') ]
+    example:[path.join(process.cwd(),'example/src/index.js') ]
 };
 ent[config.name] =[path.join(process.cwd(),'src/index.ts')];
 module.exports ={
@@ -15,8 +15,8 @@ module.exports ={
             'node_modules',
             'bower_components',
             'lib'
-        ]//,
-        //extensions: ["",  ".web.js", ".ts", ".tsx"]
+        ],
+        extensions: [ "",".js",".ts", ".tsx"]
     },
     output:{
         libraryTarget: 'umd',
@@ -49,16 +49,21 @@ module.exports ={
                 test: /\.(jsx|es6|js)$/,
                 loaders: ['eslint-loader'],
                 exclude: /node_modules/
-            },
+            }/*,
             {
                 test: /\.js$/,
                 loader: "source-map-loader"
-            }
+            }*/
         ],
         loaders:[
             {
-                test: /\.(jsx|ts)$/,
+                test: /\.(tsx|ts)$/,
                 loaders: ['ts-loader'],
+                exclude: /node_modules/
+            },
+            {
+                test: /\.(js|jsx|es6)$/,
+                loaders: ['babel-loader'],
                 exclude: /node_modules/
             },
             {

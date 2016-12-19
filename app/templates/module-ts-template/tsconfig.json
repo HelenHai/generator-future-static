@@ -1,16 +1,19 @@
 {
-  "compilerOptions": {
-    "outDir": "./lib/",
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "module": "commonjs",
-    "target": "es3",
-    "jsx": "react"
-  },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "**/*.spec.ts"
-  ]
+    "compilerOptions": {
+        "outDir": "./lib/",
+        "strictNullChecks": true,
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "moduleResolution": "node",
+        "target": "es3",
+        "jsx": "react",
+        "allowSyntheticDefaultImports": true
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "**/*.spec.ts",
+        "node_modules"
+    ]
 }
