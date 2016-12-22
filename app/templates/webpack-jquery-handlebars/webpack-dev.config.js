@@ -10,7 +10,7 @@ module.exports= function(){
     var devPort = config.devPort;
     var wbpk = Object.create(webpackConfig);
 
-    wbpk.devtool = 'source-map';
+    wbpk.devtool = 'eval';
     for (var key in wbpk.entry) {
         var ar = wbpk.entry[key];
 
