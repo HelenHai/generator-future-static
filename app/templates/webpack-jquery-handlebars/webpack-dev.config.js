@@ -55,6 +55,7 @@ module.exports= function(){
         publicPath: '',
         contentBase: config.html,
         hot: true,
+        inline:true,
         historyApiFallback: true,
         port: devPort,
         stats: {
