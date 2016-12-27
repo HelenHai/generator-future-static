@@ -1,2 +1,2 @@
-import '../../src/index.js';
-show();
+import show from '../../src/index.js'
+show()
