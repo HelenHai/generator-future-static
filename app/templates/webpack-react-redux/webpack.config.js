@@ -74,7 +74,7 @@ var webpackConfig = {
     devtool: 'source-map',
     externals: setExternals(),
     resolve: {
-        extensions: ["", ".js", ".ts", ".tsx"],
+        extensions: ["", ".js", ".ts", ".tsx", ".es6"],
         alias: extend({}, alias || {})
     },
     module: {
