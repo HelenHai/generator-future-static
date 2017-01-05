@@ -1,31 +1,31 @@
 /**
  * 主程序入口
  */
-import React, { Component ,PropTypes} from 'react';
-import {render} from "react-dom";
-import {BindReact} from 'eg-tools';
+import React, { Component} from 'react'
 
-import * as reducers from './reducers/index.es6';
+import * as reducers from './reducers/index.es6'
 
-import { Redirect, Router, Route } from 'react-router';
-import History from 'history/lib/createHashHistory';
+import { Redirect, Router, Route } from 'react-router'
+import History from 'history/lib/createHashHistory'
 
-import Index from './containers/web/Index.jsx';
-import Msg from './containers/web/Msg.jsx';
+import Index from './containers/web/Index.jsx'
+import Msg from './containers/web/Msg.jsx'
+
+import RTools from 'gfs-react-tools'
 
 class AppRouter extends Component {
 
     constructor(props) {
-        super(props);
+        super(props)
         // Opt-out of persistent state, not recommended.
         this.history = new History({
             queryKey: false
-        });
+        })
     }
 
     static defaultProps={
 
-    };
+    }
 
     /**
      * 页面路由总览，children为外接做入口，外接入口即为AppRouter
@@ -40,11 +40,23 @@ class AppRouter extends Component {
                     <Redirect from="/" to="/index" />
                 </Router>
             </div>
-        );
+        )
     }
 }
 
-render(
-    <BindReact Module={AppRouter} reducers={reducers} autoShowFetching={true} barName="web" autoDevTools={false} />,
-    document.getElementById('root')
-);
+new RTools({
+     //可选
+    //middleware:[],
+    //必填
+    module:AppRouter,
+    //可选
+    reducers:reducers,
+    //可选
+    //devTools:DevTools,
+    //可选 默认loadingbarComponent
+    //bar:null,
+    //可选  loadingbar平台（pc/wap/other）other直接使用bar字段作为参数
+    agent:'pc'//,
+    //可选  react component放取的节点id
+    //container:'root'
+})

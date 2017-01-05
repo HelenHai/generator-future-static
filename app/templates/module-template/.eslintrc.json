@@ -36,9 +36,7 @@
         "react/no-danger": "warn",
         "react/prefer-es6-class": "warn",
         "react/prop-types": "warn",
-        "react/require-optimization": "warn",
         "react/self-closing-comp": "warn",
-        "react/jsx-no-bind": "error",
         "react/jsx-no-duplicate-props": "warn",
         "react/jsx-no-comment-textnodes": "error",
         "react/jsx-no-undef": "error"

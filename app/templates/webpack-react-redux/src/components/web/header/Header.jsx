@@ -1,41 +1,47 @@
-import React, { Component ,PropTypes} from 'react';
-import {Grid,Row,Col,Suggestion} from 'eagle-ui';
-import logo from './logo.png';
-import './Header.less';
+import React, { Component ,PropTypes} from 'react'
+import {Grid,Row,Col,Suggestion} from 'eagle-ui'
+import logo from './logo.png'
+import './Header.less'
 
 export default class Header extends Component {
     constructor(props) {
 
-        super(props);
+        super(props)
     }
 
     static defaultProps={
 
-    };
+    }
+
+    static propTypes = {
+        setValueByReducers:PropTypes.func,
+        module:PropTypes.any,
+        getModuleList:PropTypes.func
+    }
 
     /**
      * 根据输入值查询组件
      * */
     async search(key){
 
-        let data = await this.props.getModuleList(key);
+        let data = await this.props.getModuleList(key)
 
-        return data;
+        return data
     }
 
-    getSearchValue(value,key,type){
+    getSearchValue(value,key){
 
-        this.props.setValueByReducers('module.val',value);
-        this.props.setValueByReducers('module.key',key);
+        this.props.setValueByReducers('module.val',value)
+        this.props.setValueByReducers('module.key',key)
     }
 
     getLink(module){
-        const key = module.get('key');
-        return key ?<a href={module.get('val')} className="send-link" target="_blank">传送门：至 <b>{key}</b> 文档处</a>:null;
+        const key = module.get('key')
+        return key ?<a href={module.get('val')} className="send-link" target="_blank">传送门：至 <b>{key}</b> 文档处</a>:null
     }
-
+    shouldComponentUpdate(){return true}
     render() {
-        const {module} = this.props;
+        const {module} = this.props
 
         return (
             <div className="header">
@@ -56,7 +62,6 @@ export default class Header extends Component {
                                 position:'relative'
                                }}>
                            <Suggestion getValueCallback={::this.getSearchValue}
-                                       onChange={(e)=>{}}
                                        queryCallback={::this.search}
                                        value={module.get('key')}
                                icon="search"
@@ -67,6 +72,6 @@ export default class Header extends Component {
                    </Row>
                 </Grid>
             </div>
-        );
+        )
     }
 }

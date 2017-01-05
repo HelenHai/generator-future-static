@@ -1,44 +1,46 @@
-import {actionType} from '../constants/action-type.es6';
+import { actionType } from '../constants/action-type.es6'
 
-import {promisefetch as fetch}  from 'eg-tools';
+import RTools from 'gfs-react-tools'
 
-export function query(){
-    return dispatch=>{
+const fetch = RTools.fetch
 
-        fetch('/test').then(function(data){
+export function query() {
+    return dispatch => {
+
+        fetch('/test').then(function(data) {
 
             dispatch({
                 type: actionType.QUERY,
                 data: data
-            });
-        }).then(()=>{
-            console.dir('test fetch for promise');
-        }).then(()=>{
-            console.dir('callback');
-        },(xhr)=>{
-            console.dir(xhr);
-        });
-    };
+            })
+        }).then(() => {
+            window.console.dir('test fetch for promise')
+        }).then(() => {
+            window.console.dir('callback')
+        }, (xhr) => {
+            window.console.dir(xhr)
+        })
+    }
 }
 
-export function getModuleList(key){
+export function getModuleList(key) {
 
-    return async ()=>{
+    return async() => {
 
-        let data = await fetch('/search');
-        if(data.status == 200){
+        let data = await fetch('/search')
+        if (data.status == 200) {
 
-            let str = JSON.stringify(data.msg.searchList);
-            let reg = new RegExp('([^[},]*\{+"key":"[^"]*'+key+'[^"]*".+?\})','gi');
+            let str = JSON.stringify(data.msg.searchList)
+            let reg = new RegExp('([^[},]*\{+"key":"[^"]*' + key + '[^"]*".+?\})', 'gi')
 
-            str = str.match(reg);
+            str = str.match(reg)
 
-            data = str ?str :[];
+            data = str ? str : []
 
-            return data;
+            return data
         }
 
-        return [];
+        return []
 
     }
 }

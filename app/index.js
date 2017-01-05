@@ -16,7 +16,8 @@ var selfupdate = require('selfupdate');
 function getGitOrigin() {
     var gitOrigin = '';
     try {
-        var gitConfig = fs.readFileSync('./.git/config', 'utf-8'), m = gitConfig.match(/\[remote\s+"origin"]\s+url\s+=\s+(\S+)\s+/i);
+        var gitConfig = fs.readFileSync('./.git/config', 'utf-8'),
+            m = gitConfig.match(/\[remote\s+"origin"]\s+url\s+=\s+(\S+)\s+/i);
 
         if (m) {
             gitOrigin = m[1];
@@ -39,11 +40,11 @@ function getHomeUrl(repo) {
 }
 
 module.exports = generators.Base.extend({
-    initializing: function () {
+    initializing: function() {
         this.props = {};
 
         //检查版本，提示更新
-        selfupdate.isUpdated(packageJSON, function (error, isUpdated) {
+        selfupdate.isUpdated(packageJSON, function(error, isUpdated) {
             if (error) throw error;
             if (isUpdated) return;
 
@@ -55,13 +56,13 @@ module.exports = generators.Base.extend({
                 // icon:path.resolve(__dirname,'peon.jpg'),
                 sound: true, // Only Notification Center or Windows Toasters
                 wait: true // Wait with callback, until user action is taken against notification
-            }, function (err, response) {
+            }, function(err, response) {
                 // Response is response from notification
             });
 
-            console.log(chalk.red('工具更新中...') );
+            console.log(chalk.red('工具更新中...'));
 
-            selfupdate.update(packageJSON, function (error, version) {
+            selfupdate.update(packageJSON, function(error, version) {
                 if (error) throw error;
                 notifier.notify({
                     title: 'generator-trade-static',
@@ -71,7 +72,7 @@ module.exports = generators.Base.extend({
                     // icon:path.resolve(__dirname,'peon.jpg'),
                     sound: true, // Only Notification Center or Windows Toasters
                     wait: true // Wait with callback, until user action is taken against notification
-                }, function (err, response) {
+                }, function(err, response) {
                     // Response is response from notification
                 });
 
@@ -80,14 +81,13 @@ module.exports = generators.Base.extend({
         });
     },
 
-    prompting: function () {
+    prompting: function() {
         var done = this.async();
         this.log(yosay(
             'Welcome to the sweet ' + chalk.red(packageJSON.name) + ' generator!'
         ));
 
-        var prompts = [
-            {
+        var prompts = [{
                 name: 'boilerplate',
                 type: 'list',
                 choices: [
@@ -101,7 +101,7 @@ module.exports = generators.Base.extend({
             }, {
                 name: 'name',
                 message: 'Your project name',
-                default: path.basename(process.cwd())// Default to current folder name
+                default: path.basename(process.cwd()) // Default to current folder name
             }, {
                 name: 'version',
                 default: '0.1.0',
@@ -121,7 +121,7 @@ module.exports = generators.Base.extend({
                 name: 'keywords',
                 default: 'trade-static',
                 message: 'keywords',
-                filter: function (words) {
+                filter: function(words) {
                     return words.split(/\s*,\s*/g);
                 }
             },
@@ -137,14 +137,14 @@ module.exports = generators.Base.extend({
             }
         ];
 
-        this.prompt(prompts, function (props) {
+        this.prompt(prompts, function(props) {
             this.props = props;
             // To access props later use this.props.someAnswer;
 
             done();
         }.bind(this));
     },
-    default: function () {
+    default: function() {
 
         this.composeWith('license', {
             options: {
@@ -158,13 +158,13 @@ module.exports = generators.Base.extend({
 
     },
     writing: {
-        "init": function () {
+        "init": function() {
             this.currentDir = 'webpack-react-redux';
             var map = {
                 "webpack+react+redux+cortex": "webpack-react-redux",
                 "webpack+jquery+handlebars+cortex": "webpack-jquery-handlebars",
-                'module-template(jquery or react)':'module-template',
-                "module-ts-template":'module-ts-template'
+                'module-template(jquery or react)': 'module-template',
+                "module-ts-template": 'module-ts-template'
             };
             this.currentDir = map[this.props.boilerplate] || 'webpack+react+redux+cortex';
         },
@@ -172,284 +172,279 @@ module.exports = generators.Base.extend({
          * 生成 package.json
          *
          * */
-        "package_json": function () {
+        "package_json": function() {
             var currentPkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
             var pkg_json = {
-                    "webpack+react+redux+cortex": {
-                        "peerDependencies": {},
-                        "dependencies": {
-                            "babel-polyfill": "^6.3.14",
-                            "bootstrap": "^3.3.6",
-                            "classnames": "^2.2.0",
-                            "eagle-ui": "^1.4.5",
-                            "eg-tools": "^6.0.1",
-                            "es5-shim": "^4.5.9",
-                            "extend": "^3.0.0",
-                            "history": "^1.13.1",
-                            "immutable": "^3.7.5",
-                            "lodash": "^3.10.1",
-                            "phoenix-styles": "^0.1.5",
-                            "phoenix-ui": "^0.1.3",
-                            "react": "^0.14.3",
-                            "react-dom": "~0.14.8",
-                            "react-redux": "^4.0.0",
-                            "react-router": "^1.0.0",
-                            "redux": "^3.0.4",
-                            "redux-thunk": "^1.0.0",
-                            "whatwg-fetch": "^0.10.1",
-                            "console-polyfill": "^0.2.3"
-                        },
-                        "devDependencies": {
-                            "internal-ip": "^1.2.0",
-                            "autoprefixer": "^6.3.7",
-                            "autoprefixer-loader": "^3.2.0",
-                            "babel": "^6.0.15",
-                            "babel-core": "^5.8.23",
-                            "babel-loader": "^5.3.2",
-                            "babel-preset-es2015": "^6.1.18",
-                            "babel-preset-react": "^6.1.18",
-                            "babel-preset-stage-0": "^6.1.18",
-                            "cortex-recombiner": "^1.0.13",
-                            "cortex-recombiner-webpack-plugin": "^1.0.3",
-                            "css-loader": "0.17.0",
-                            "extend": "^3.0.0",
-                            "extract-text-webpack-plugin": "^0.8.2",
-                            "file-loader": "^0.9.0",
-                            "glob": "^7.0.5",
-                            "gulp": "^3.9.0",
-                            "gulp-babel": "^5.3.0",
-                            "gulp-h-manifest": "^1.0.2",
-                            "gulp-htmlincluder": "^0.1.0",
-                            "gulp-less": "^3.0.3",
-                            "gulp-load-plugins": "^1.0.0-rc.1",
-                            "gulp-minify-css": "^1.2.1",
-                            "gulp-open": "^2.0.0",
-                            "gulp-rename": "^1.2.2",
-                            "gulp-rimraf": "^0.2.0",
-                            "gulp-util": "^3.0.6",
-                            "gulp-webpack": "^1.5.0",
-                            "handlebars-loader": "^1.3.0",
-                            "html-webpack-plugin": "^2.22.0",
-                            "less": "^2.5.1",
-                            "less-loader": "^2.2.0",
-                            "postcss-color-rebeccapurple": "^2.0.0",
-                            "postcss-initial": "^1.5.2",
-                            "postcss-loader": "^0.9.1",
-                            "raw-loader": "^0.5.1",
-                            "react-hot-loader": "^1.3.0",
-                            "run-sequence": "^1.1.5",
-                            "style-loader": "^0.12.3",
-                            "url-loader": "^0.5.7",
-                            "webpack": "^1.12.1",
-                            "webpack-bower-resolver": "0.0.1",
-                            "webpack-dev-server": "^1.10.1",
-                            "babel-eslint": "^6.1.2",
-                            "es3ify-loader": "^0.2.0",
-                            "eslint": "^3.4.0",
-                            "eslint-loader": "^1.5.0",
-                            "eslint-plugin-react": "^6.2.0",
-                            "es3ify-webpack-plugin": "0.0.1"
-                        },
-                        "scripts": {
-                            "demo": "node_modules/.bin/gulp ",
-                            "build": "node_modules/.bin/gulp ",
-                            "dev": "node_modules/.bin/gulp dev",
-                            "start": "node_modules/.bin/gulp dev"
-                        }
+                "webpack+react+redux+cortex": {
+                    "peerDependencies": {},
+                    "dependencies": {
+                        "babel-polyfill": "^6.3.14",
+                        "classnames": "^2.2.0",
+                        "eagle-ui": "^1.4.5",
+                        "es5-shim": "^4.5.9",
+                        "extend": "^3.0.0",
+                        "history": "^1.13.1",
+                        "immutable": "^3.7.5",
+                        "lodash": "^3.10.1",
+                        "react": "^0.14.3",
+                        "react-dom": "~0.14.8",
+                        "react-redux": "^4.0.0",
+                        "react-router": "^1.0.0",
+                        "redux": "^3.0.4",
+                        "redux-thunk": "^1.0.0",
+                        "console-polyfill": "^0.2.3",
+                        "gfs-react-redux-twoway-binding": "^0.1.0",
+                        "gfs-react-tools": "^1.0.4"
                     },
-                    "webpack+jquery+handlebars+cortex": {
-                        "peerDependencies": {},
-                        "dependencies": {
-                            "babel-polyfill": "^6.3.14",
-                            "bootstrap": "^3.3.6",
-                            "handlebars": "^4.0.5",
-                            "jq-modal": "^0.1.3",
-                            "jquery": "^2.2.4",
-                            "underscore": "^1.8.3",
-                            "es5-shim": "^4.5.9"
-                        },
-                        "devDependencies": {
-                            "es3ify-webpack-plugin": "0.0.1",
-                            "autoprefixer": "^6.3.7",
-                            "autoprefixer-loader": "^3.2.0",
-                            "babel": "^6.0.15",
-                            "babel-core": "^5.8.23",
-                            "babel-loader": "^5.3.2",
-                            "babel-polyfill": "^6.8.0",
-                            "cortex-recombiner-webpack-plugin": "^1.0.3",
-                            "css-loader": "0.17.0",
-                            "ejs-loader": "^0.3.0",
-                            "extend": "^3.0.0",
-                            "extract-text-webpack-plugin": "^0.8.2",
-                            "file-loader": "^0.9.0",
-                            "glob": "^5.0.14",
-                            "gulp": "^3.9.0",
-                            "gulp-babel": "^5.3.0",
-                            "gulp-htmlincluder": "^0.1.0",
-                            "gulp-less": "^3.0.3",
-                            "gulp-load-plugins": "^1.0.0-rc.1",
-                            "gulp-minify-css": "^1.2.1",
-                            "gulp-open": "^2.0.0",
-                            "gulp-rename": "^1.2.2",
-                            "gulp-rimraf": "^0.2.0",
-                            "gulp-util": "^3.0.6",
-                            "gulp-webpack": "^1.5.0",
-                            "handlebars-loader": "^1.3.0",
-                            "html-webpack-plugin": "^2.22.0",
-                            "less": "^2.5.1",
-                            "less-loader": "^2.2.0",
-                            "postcss-color-rebeccapurple": "^2.0.0",
-                            "postcss-initial": "^1.5.2",
-                            "postcss-loader": "^0.9.1",
-                            "raw-loader": "^0.5.1",
-                            "react-hot-loader": "^1.3.0",
-                            "run-sequence": "^1.2.1",
-                            "style-loader": "^0.12.3",
-                            "url-loader": "^0.5.7",
-                            "webpack": "^1.12.1",
-                            "webpack-bower-resolver": "0.0.1",
-                            "webpack-dev-server": "^1.10.1"
-                        },
-                        "scripts": {
-                            "demo": "node_modules/.bin/gulp ",
-                            "build": "node_modules/.bin/gulp ",
-                            "dev": "node_modules/.bin/gulp dev",
-                            "start": "node_modules/.bin/gulp dev"
-                        }
+                    "devDependencies": {
+                        "internal-ip": "^1.2.0",
+                        "autoprefixer": "^6.3.7",
+                        "autoprefixer-loader": "^3.2.0",
+                        "babel": "^6.0.15",
+                        "babel-core": "^5.8.23",
+                        "babel-loader": "^5.3.2",
+                        "babel-preset-es2015": "^6.1.18",
+                        "babel-preset-react": "^6.1.18",
+                        "babel-preset-stage-0": "^6.1.18",
+                        "cortex-recombiner": "^1.0.13",
+                        "cortex-recombiner-webpack-plugin": "^1.0.3",
+                        "css-loader": "0.17.0",
+                        "extend": "^3.0.0",
+                        "extract-text-webpack-plugin": "^0.8.2",
+                        "file-loader": "^0.9.0",
+                        "glob": "^7.0.5",
+                        "gulp": "^3.9.0",
+                        "gulp-babel": "^5.3.0",
+                        "gulp-h-manifest": "^1.0.2",
+                        "gulp-htmlincluder": "^0.1.0",
+                        "gulp-less": "^3.0.3",
+                        "gulp-load-plugins": "^1.0.0-rc.1",
+                        "gulp-minify-css": "^1.2.1",
+                        "gulp-open": "^2.0.0",
+                        "gulp-rename": "^1.2.2",
+                        "gulp-rimraf": "^0.2.0",
+                        "gulp-util": "^3.0.6",
+                        "gulp-webpack": "^1.5.0",
+                        "handlebars-loader": "^1.3.0",
+                        "html-webpack-plugin": "^2.22.0",
+                        "less": "^2.5.1",
+                        "less-loader": "^2.2.0",
+                        "postcss-color-rebeccapurple": "^2.0.0",
+                        "postcss-initial": "^1.5.2",
+                        "postcss-loader": "^0.9.1",
+                        "raw-loader": "^0.5.1",
+                        "react-hot-loader": "^1.3.0",
+                        "run-sequence": "^1.1.5",
+                        "style-loader": "^0.12.3",
+                        "url-loader": "^0.5.7",
+                        "webpack": "^1.12.1",
+                        "webpack-bower-resolver": "0.0.1",
+                        "webpack-dev-server": "^1.10.1",
+                        "babel-eslint": "^6.1.2",
+                        "es3ify-loader": "^0.2.0",
+                        "eslint": "^3.4.0",
+                        "eslint-loader": "^1.5.0",
+                        "eslint-plugin-react": "^6.2.0",
+                        "es3ify-webpack-plugin": "0.0.1"
                     },
-                    "module-template(jquery or react)":{
-                        "main": "lib/",
-                        "dependencies": {
-                            "extend": "^3.0.0",
-                            "classnames": "^2.1.3",
-                            "handlebars": "^4.0.5"
-                        },
-                        "peerDependencies": {
-                        },
-                        "devDependencies": {
-                            "internal-ip": "^1.2.0",
-                            "babel": "^6.0.15",
-                            "babel-core": "^5.8.23",
-                            "babel-loader": "^5.3.2",
-                            "babel-polyfill": "^6.8.0",
-                            "css-loader": "0.17.0",
-                            "es3ify-webpack-plugin": "0.0.1",
-                            "extract-text-webpack-plugin": "^0.8.2",
-                            "glob": "^5.0.14",
-                            "gulp": "^3.9.0",
-                            "gulp-babel": "^5.3.0",
-                            "gulp-karma": "0.0.5",
-                            "gulp-less": "^3.0.3",
-                            "gulp-load-plugins": "^1.0.0-rc.1",
-                            "gulp-minify-css": "^1.2.1",
-                            "gulp-open": "^2.0.0",
-                            "gulp-rename": "^1.2.2",
-                            "gulp-util": "^3.0.6",
-                            "gulp-webpack": "^1.5.0",
-                            "handlebars-loader": "^1.3.0",
-                            "jasmine-core": "^2.3.4",
-                            "karma": "^0.13.15",
-                            "karma-chrome-launcher": "^0.2.1",
-                            "karma-cli": "^0.1.1",
-                            "karma-jasmine": "^0.3.6",
-                            "karma-webpack": "^1.7.0",
-                            "less": "^2.5.1",
-                            "less-loader": "^2.2.0",
-                            "raw-loader": "^0.5.1",
-                            "react": "^0.14.3",
-                            "react-hot-loader": "^1.3.0",
-                            "style-loader": "^0.12.3",
-                            "webpack": "^1.12.1",
-                            "url-loader": "^0.5.7",
-                            "webpack-bower-resolver": "0.0.1",
-                            "webpack-dev-server": "^1.10.1",
-                            "es3ify-loader": "^0.2.0",
-                            "eslint": "^3.4.0",
-                            "eslint-loader": "^1.5.0",
-                            "babel-eslint": "^6.1.2",
-                            "eslint-plugin-react": "^6.2.0",
-                            "del": "^2.2.2"
-                        },
-                        "scripts": {
-                            "build": "node_modules/.bin/gulp && node_modules/.bin/gulp min",
-                            "test": "karma start",
-                            "demo": "node_modules/.bin/gulp demo",
-                            "doc": "smartDoc ||node_modules/.bin/smartDoc",
-                            "start":"npm run demo",
-                            "prepublish": " npm run build"
-                        }
-                    },
-                    "module-ts-template":{
-                        "main": "lib/",
-                        "dependencies": {
-                            "@types/react": "^0.14.55",
-                            "@types/react-dom": "^0.14.19",
-                            "classnames": "^2.1.3",
-                            "extend": "^3.0.0",
-                            "react": "^15.4.1",
-                            "react-dom": "^15.4.1"
-                        },
-                        "peerDependencies": {
-                        },
-                        "devDependencies": {
-                            "awesome-typescript-loader": "^3.0.0-beta.17",
-                            "babel": "^6.0.15",
-                            "babel-core": "^5.8.23",
-                            "babel-eslint": "^6.1.2",
-                            "babel-loader": "^5.3.2",
-                            "babel-polyfill": "^6.8.0",
-                            "css-loader": "0.17.0",
-                            "del": "^2.2.2",
-                            "es3ify-loader": "^0.2.0",
-                            "es3ify-webpack-plugin": "0.0.1",
-                            "eslint": "^3.4.0",
-                            "eslint-loader": "^1.5.0",
-                            "eslint-plugin-react": "^6.2.0",
-                            "extract-text-webpack-plugin": "^0.8.2",
-                            "glob": "^5.0.14",
-                            "gulp": "^3.9.0",
-                            "gulp-babel": "^5.3.0",
-                            "gulp-karma": "0.0.5",
-                            "gulp-less": "^3.0.3",
-                            "gulp-load-plugins": "^1.0.0-rc.1",
-                            "gulp-minify-css": "^1.2.1",
-                            "gulp-open": "^2.0.0",
-                            "gulp-rename": "^1.2.2",
-                            "gulp-util": "^3.0.6",
-                            "gulp-webpack": "^1.5.0",
-                            "handlebars-loader": "^1.3.0",
-                            "internal-ip": "^1.2.0",
-                            "jasmine-core": "^2.3.4",
-                            "karma": "^0.13.15",
-                            "karma-chrome-launcher": "^0.2.1",
-                            "karma-cli": "^0.1.1",
-                            "karma-jasmine": "^0.3.6",
-                            "karma-webpack": "^1.7.0",
-                            "less": "^2.5.1",
-                            "less-loader": "^2.2.0",
-                            "raw-loader": "^0.5.1",
-                            "react": "^0.14.3",
-                            "react-hot-loader": "^1.3.0",
-                            "source-map-loader": "^0.1.5",
-                            "style-loader": "^0.12.3",
-                            "ts-loader": "^1.3.2",
-                            "typescript": "^2.1.4",
-                            "url-loader": "^0.5.7",
-                            "webpack": "^1.12.1",
-                            "webpack-bower-resolver": "0.0.1",
-                            "webpack-dev-server": "^1.10.1"
-                        },
-                        "scripts": {
-                            "build": "tsc && node_modules/.bin/gulp && node_modules/.bin/gulp min",
-                            "test": "karma start",
-                            "demo": "node_modules/.bin/gulp demo",
-                            "doc": "smartDoc ||node_modules/.bin/smartDoc",
-                            "start": "npm run demo",
-                            "prepublish": " npm run build"
-                        }
+                    "scripts": {
+                        "demo": "node_modules/.bin/gulp ",
+                        "build": "node_modules/.bin/gulp ",
+                        "dev": "node_modules/.bin/gulp dev",
+                        "start": "node_modules/.bin/gulp dev"
                     }
-                }[this.props.boilerplate] || {};
+                },
+                "webpack+jquery+handlebars+cortex": {
+                    "peerDependencies": {},
+                    "dependencies": {
+                        "babel-polyfill": "^6.3.14",
+                        "bootstrap": "^3.3.6",
+                        "handlebars": "^4.0.5",
+                        "jq-modal": "^0.1.3",
+                        "jquery": "^2.2.4",
+                        "underscore": "^1.8.3",
+                        "es5-shim": "^4.5.9"
+                    },
+                    "devDependencies": {
+                        "es3ify-webpack-plugin": "0.0.1",
+                        "autoprefixer": "^6.3.7",
+                        "autoprefixer-loader": "^3.2.0",
+                        "babel": "^6.0.15",
+                        "babel-core": "^5.8.23",
+                        "babel-loader": "^5.3.2",
+                        "babel-polyfill": "^6.8.0",
+                        "cortex-recombiner-webpack-plugin": "^1.0.3",
+                        "css-loader": "0.17.0",
+                        "ejs-loader": "^0.3.0",
+                        "extend": "^3.0.0",
+                        "extract-text-webpack-plugin": "^0.8.2",
+                        "file-loader": "^0.9.0",
+                        "glob": "^5.0.14",
+                        "gulp": "^3.9.0",
+                        "gulp-babel": "^5.3.0",
+                        "gulp-htmlincluder": "^0.1.0",
+                        "gulp-less": "^3.0.3",
+                        "gulp-load-plugins": "^1.0.0-rc.1",
+                        "gulp-minify-css": "^1.2.1",
+                        "gulp-open": "^2.0.0",
+                        "gulp-rename": "^1.2.2",
+                        "gulp-rimraf": "^0.2.0",
+                        "gulp-util": "^3.0.6",
+                        "gulp-webpack": "^1.5.0",
+                        "handlebars-loader": "^1.3.0",
+                        "html-webpack-plugin": "^2.22.0",
+                        "less": "^2.5.1",
+                        "less-loader": "^2.2.0",
+                        "postcss-color-rebeccapurple": "^2.0.0",
+                        "postcss-initial": "^1.5.2",
+                        "postcss-loader": "^0.9.1",
+                        "raw-loader": "^0.5.1",
+                        "react-hot-loader": "^1.3.0",
+                        "run-sequence": "^1.2.1",
+                        "style-loader": "^0.12.3",
+                        "url-loader": "^0.5.7",
+                        "webpack": "^1.12.1",
+                        "webpack-bower-resolver": "0.0.1",
+                        "webpack-dev-server": "^1.10.1"
+                    },
+                    "scripts": {
+                        "demo": "node_modules/.bin/gulp ",
+                        "build": "node_modules/.bin/gulp ",
+                        "dev": "node_modules/.bin/gulp dev",
+                        "start": "node_modules/.bin/gulp dev"
+                    }
+                },
+                "module-template(jquery or react)": {
+                    "main": "lib/",
+                    "dependencies": {
+                        "extend": "^3.0.0",
+                        "classnames": "^2.1.3",
+                        "handlebars": "^4.0.5"
+                    },
+                    "peerDependencies": {},
+                    "devDependencies": {
+                        "internal-ip": "^1.2.0",
+                        "babel": "^6.0.15",
+                        "babel-core": "^5.8.23",
+                        "babel-loader": "^5.3.2",
+                        "babel-polyfill": "^6.8.0",
+                        "css-loader": "0.17.0",
+                        "es3ify-webpack-plugin": "0.0.1",
+                        "extract-text-webpack-plugin": "^0.8.2",
+                        "glob": "^5.0.14",
+                        "gulp": "^3.9.0",
+                        "gulp-babel": "^5.3.0",
+                        "gulp-karma": "0.0.5",
+                        "gulp-less": "^3.0.3",
+                        "gulp-load-plugins": "^1.0.0-rc.1",
+                        "gulp-minify-css": "^1.2.1",
+                        "gulp-open": "^2.0.0",
+                        "gulp-rename": "^1.2.2",
+                        "gulp-util": "^3.0.6",
+                        "gulp-webpack": "^1.5.0",
+                        "handlebars-loader": "^1.3.0",
+                        "jasmine-core": "^2.3.4",
+                        "karma": "^0.13.15",
+                        "karma-chrome-launcher": "^0.2.1",
+                        "karma-cli": "^0.1.1",
+                        "karma-jasmine": "^0.3.6",
+                        "karma-webpack": "^1.7.0",
+                        "less": "^2.5.1",
+                        "less-loader": "^2.2.0",
+                        "raw-loader": "^0.5.1",
+                        "react": "^0.14.3",
+                        "react-hot-loader": "^1.3.0",
+                        "style-loader": "^0.12.3",
+                        "webpack": "^1.12.1",
+                        "url-loader": "^0.5.7",
+                        "webpack-bower-resolver": "0.0.1",
+                        "webpack-dev-server": "^1.10.1",
+                        "es3ify-loader": "^0.2.0",
+                        "eslint": "^3.4.0",
+                        "eslint-loader": "^1.5.0",
+                        "babel-eslint": "^6.1.2",
+                        "eslint-plugin-react": "^6.2.0",
+                        "del": "^2.2.2"
+                    },
+                    "scripts": {
+                        "build": "node_modules/.bin/gulp && node_modules/.bin/gulp min",
+                        "test": "karma start",
+                        "demo": "node_modules/.bin/gulp demo",
+                        "doc": "smartDoc ||node_modules/.bin/smartDoc",
+                        "start": "npm run demo",
+                        "prepublish": " npm run build"
+                    }
+                },
+                "module-ts-template": {
+                    "main": "lib/",
+                    "dependencies": {
+                        "@types/react": "^0.14.55",
+                        "@types/react-dom": "^0.14.19",
+                        "classnames": "^2.1.3",
+                        "extend": "^3.0.0",
+                        "react": "^15.4.1",
+                        "react-dom": "^15.4.1"
+                    },
+                    "peerDependencies": {},
+                    "devDependencies": {
+                        "awesome-typescript-loader": "^3.0.0-beta.17",
+                        "babel": "^6.0.15",
+                        "babel-core": "^5.8.23",
+                        "babel-eslint": "^6.1.2",
+                        "babel-loader": "^5.3.2",
+                        "babel-polyfill": "^6.8.0",
+                        "css-loader": "0.17.0",
+                        "del": "^2.2.2",
+                        "es3ify-loader": "^0.2.0",
+                        "es3ify-webpack-plugin": "0.0.1",
+                        "eslint": "^3.4.0",
+                        "eslint-loader": "^1.5.0",
+                        "eslint-plugin-react": "^6.2.0",
+                        "extract-text-webpack-plugin": "^0.8.2",
+                        "glob": "^5.0.14",
+                        "gulp": "^3.9.0",
+                        "gulp-babel": "^5.3.0",
+                        "gulp-karma": "0.0.5",
+                        "gulp-less": "^3.0.3",
+                        "gulp-load-plugins": "^1.0.0-rc.1",
+                        "gulp-minify-css": "^1.2.1",
+                        "gulp-open": "^2.0.0",
+                        "gulp-rename": "^1.2.2",
+                        "gulp-util": "^3.0.6",
+                        "gulp-webpack": "^1.5.0",
+                        "handlebars-loader": "^1.3.0",
+                        "internal-ip": "^1.2.0",
+                        "jasmine-core": "^2.3.4",
+                        "karma": "^0.13.15",
+                        "karma-chrome-launcher": "^0.2.1",
+                        "karma-cli": "^0.1.1",
+                        "karma-jasmine": "^0.3.6",
+                        "karma-webpack": "^1.7.0",
+                        "less": "^2.5.1",
+                        "less-loader": "^2.2.0",
+                        "raw-loader": "^0.5.1",
+                        "react": "^0.14.3",
+                        "react-hot-loader": "^1.3.0",
+                        "source-map-loader": "^0.1.5",
+                        "style-loader": "^0.12.3",
+                        "ts-loader": "^1.3.2",
+                        "typescript": "^2.1.4",
+                        "url-loader": "^0.5.7",
+                        "webpack": "^1.12.1",
+                        "webpack-bower-resolver": "0.0.1",
+                        "webpack-dev-server": "^1.10.1"
+                    },
+                    "scripts": {
+                        "build": "tsc && node_modules/.bin/gulp && node_modules/.bin/gulp min",
+                        "test": "karma start",
+                        "demo": "node_modules/.bin/gulp demo",
+                        "doc": "smartDoc ||node_modules/.bin/smartDoc",
+                        "start": "npm run demo",
+                        "prepublish": " npm run build"
+                    }
+                }
+            }[this.props.boilerplate] || {};
 
             this.pkg = extend({
                 name: _.kebabCase(this.props.name),
@@ -473,7 +468,7 @@ module.exports = generators.Base.extend({
                 "homepage": "http://" + getHomeUrl(this.props.repo)
             }, currentPkg);
 
-            if(pkg_json.main){
+            if (pkg_json.main) {
                 this.pkg.main = pkg_json.main;
             }
 
@@ -489,27 +484,27 @@ module.exports = generators.Base.extend({
          * 生成 cortex.json
          *
          * */
-        "cortex_json": function () {
+        "cortex_json": function() {
             if (this.props.boilerplate.search('cortex') != -1) {
                 var currentCortex = this.fs.readJSON(this.destinationPath('cortex.json'), {});
 
                 var cortex_json = {
-                        "webpack+react+redux+cortex": {
-                            devDependencies: {},
-                            dependencies: {
-                                "hippo": "^1.2.15",
-                                "dpzeus": "~0.4.3"
-                            },
-                            scripts: {}
+                    "webpack+react+redux+cortex": {
+                        devDependencies: {},
+                        dependencies: {
+                            "hippo": "^1.2.15",
+                            "dpzeus": "~0.4.3"
                         },
-                        "webpack+jquery+handlebars+cortex": {
-                            devDependencies: {},
-                            dependencies: {
-                                "hippo": "^1.2.15"
-                            },
-                            scripts: {}
-                        }
-                    }[this.props.boilerplate] || {};
+                        scripts: {}
+                    },
+                    "webpack+jquery+handlebars+cortex": {
+                        devDependencies: {},
+                        dependencies: {
+                            "hippo": "^1.2.15"
+                        },
+                        scripts: {}
+                    }
+                }[this.props.boilerplate] || {};
 
                 var cortex = extend({
                     name: this.pkg.name,
@@ -541,18 +536,18 @@ module.exports = generators.Base.extend({
          * 生成 README.md
          *
          * */
-        "directories": function () {
+        "directories": function() {
             //this.fs.copy(this.templatePath('./' + this.currentDir ) + "/gitignore", this.destinationPath('./.gitignore'));
             this.fs.copy(this.templatePath('./' + this.currentDir) + "/**/*.*", this.destinationPath('./'));
             this.fs.copy(this.templatePath('./' + this.currentDir) + "/\.*", this.destinationPath('./'));
-            this.fs.copy(this.templatePath('./' + this.currentDir ) + "/gitignore", this.destinationPath('./.gitignore'));
-            this.fs.copy(this.templatePath('./' + this.currentDir ) + "/npmignore", this.destinationPath('./.npmignore'));
+            this.fs.copy(this.templatePath('./' + this.currentDir) + "/gitignore", this.destinationPath('./.gitignore'));
+            this.fs.copy(this.templatePath('./' + this.currentDir) + "/npmignore", this.destinationPath('./.npmignore'));
 
             //this.fs.copyTpl(this.templatePath('./' + this.currentDir + '/tpl') + "/**/*.*", this.destinationPath('./'), {AppName: this.pkg.name});
         }
     },
 
-    install: function () {
+    install: function() {
         //this.installDependencies({bower: false});
         var opt = {
             cwd: this.destinationPath('./')

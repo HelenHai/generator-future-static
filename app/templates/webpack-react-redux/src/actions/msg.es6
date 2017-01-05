@@ -1,16 +1,16 @@
-import {actionType} from '../constants/action-type.es6';
+//import { actionType } from '../constants/action-type.es6'
 
-import {promisefetch as fetch}  from 'eg-tools';
+import RTools from 'gfs-react-tools'
 
-export function save(callback){
+export function save(callback) {
 
-    return dispatch=>{
+    return ( /*dispatch*/ ) => {
 
-        fetch('/msg/save').then(function(data){
+        RTools.fetch('/msg/save').then(function(data) {
 
-            if(data.status ==200){
-                callback();
+            if (data.status == 200) {
+                callback()
             }
-        });
-    };
+        })
+    }
 }

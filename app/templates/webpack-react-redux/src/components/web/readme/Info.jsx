@@ -1,17 +1,19 @@
 //简介
 
-import React, { Component ,PropTypes} from 'react';
-import {Grid,Row,Col,Panel,PanelHeader,PanelContent,PanelFooter} from 'eagle-ui';
+import React, { Component} from 'react'
+import {Row,Col,Panel,PanelHeader,PanelContent} from 'eagle-ui'
 
 export default class Info extends Component {
     constructor(props) {
 
-        super(props);
+        super(props)
     }
 
     static defaultProps={
 
-    };
+    }
+
+    shouldComponentUpdate(){return true}
 
     render() {
         return (
@@ -33,7 +35,8 @@ export default class Info extends Component {
                                         <li><a href="http://uedfamily.com/documents/eagle-ui/doc/classes/Panel.html" target="_blank">eagle-ui</a> 用于pc端项目的react组件库框架</li>
                                         <li><a href="http://uedfamily.com/documents/phoenix-ui/doc" target="_blank">phoenix-ui</a> 这是一款基于react开发的一套wap端组件框架。需要依赖phoenix-style库</li>
                                         <li><a href="https://github.com/future-team/phoenix-styles" target="_blank">phoenix-styles</a> 单纯的样式库，配合文档给出的html结构使用，目前使用文档在项目中的example里</li>
-                                        <li><a href="https://github.com/future-team/eg-tools" target="_blank">eg-tools</a> 提供一些较为基础的类库，如双向绑定、store可视视图调试工具、fetch、loadingbar等</li>
+                                        <li><a href="https://github.com/future-team/gfs-react-tools" target="_blank">gfs-react-tools</a> 提供一些较为基础的类库，如store可视视图调试工具、fetch、loadingbar等</li>
+                                        <li><a href="https://github.com/future-team/gfs-react-redux-twoway-binding" target="_blank">gfs-react-redux-twoway-binding</a> 提供双向绑定修改数据实时更新界面功能</li>
                                         <li><a href="" target="_blank">classnames</a> 组装className</li>
                                     </ul>
                                 </Col>
@@ -42,6 +45,6 @@ export default class Info extends Component {
                     </Panel>
                 </Col>
             </Row>
-        );
+        )
     }
 }

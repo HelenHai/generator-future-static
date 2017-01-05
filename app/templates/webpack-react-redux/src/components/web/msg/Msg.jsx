@@ -1,11 +1,11 @@
-import React, { Component ,PropTypes} from 'react';
-import {Grid,Row,Col,Panel,PanelHeader,PanelContent,PanelFooter,ValidatorPanel,Input,FormGroup,Button,Dialog} from 'eagle-ui';
+import React, { Component ,PropTypes} from 'react'
+import {Grid,Row,Col,Panel,PanelHeader,PanelContent,ValidatorPanel,Input,FormGroup,Button,Dialog} from 'eagle-ui'
 
-import {bindingMixin} from 'eg-tools';
+import {bindingMixin} from 'eg-tools'
 
-import SuccessDialog from './SuccessDialog.jsx';
+import SuccessDialog from './SuccessDialog.jsx'
 
-import './Msg.less';
+import './Msg.less'
 
 /***
  *
@@ -13,9 +13,15 @@ import './Msg.less';
  */
 @bindingMixin
 export default class Msg extends Component {
+
+    static propTypes = {
+        save:PropTypes.func,
+        msg:PropTypes.object
+    }
+
     constructor(props) {
 
-        super(props);
+        super(props)
 
         this.rules = {
             username:{
@@ -34,30 +40,30 @@ export default class Msg extends Component {
                     params:250
                 }
             }
-        };
-        this.setBinding('msg');
+        }
+        this.setBinding('msg')
     }
 
     static defaultProps={
 
-    };
+    }
 
     onChangeHandler(e){
-        this.manualChange(e.target.name,e.target.value);
+        this.manualChange(e.target.name,e.target.value)
     }
 
     submitHandler(){
 
        this.props.save(()=>{
            Dialog.mask('msg-success')
-       });
+       })
 
-        return false;
+        return false
     }
-
+    shouldComponentUpdate(){return true}
     render() {
 
-        const {msg} = this.props;
+        const {msg} = this.props
 
         return (
             <Grid fluid className="readme">
@@ -101,6 +107,6 @@ export default class Msg extends Component {
                 </Row>
                 <SuccessDialog msg = {msg}></SuccessDialog>
             </Grid>
-        );
+        )
     }
 }

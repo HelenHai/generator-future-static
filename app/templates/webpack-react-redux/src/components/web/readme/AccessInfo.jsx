@@ -1,14 +1,14 @@
 //获取方式
 
-import React, { Component ,PropTypes} from 'react';
-import {Grid,Row,Col,Panel,PanelHeader,PanelContent,PanelFooter} from 'eagle-ui';
+import React, { Component } from 'react'
+import {Row,Col,Panel,PanelHeader,PanelContent} from 'eagle-ui'
 
 export default class AccessInfo extends Component {
     constructor(props) {
 
-        super(props);
+        super(props)
     }
-
+    shouldComponentUpdate(){return true}
     render() {
         return (
             <Row>
@@ -30,6 +30,6 @@ export default class AccessInfo extends Component {
                     </Panel>
                 </Col>
             </Row>
-        );
+        )
     }
 }

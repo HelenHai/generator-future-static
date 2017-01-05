@@ -1,6 +1,5 @@
-import React, { Component ,PropTypes} from 'react';
-import {Grid,Row,Col,Suggestion} from 'eagle-ui';
-import './Content.less';
+import React, { Component ,PropTypes} from 'react'
+import './Content.less'
 
 /***
  *
@@ -9,18 +8,23 @@ import './Content.less';
 export default class Content extends Component {
     constructor(props) {
 
-        super(props);
+        super(props)
+    }
+
+    static propTypes = {
+        children:PropTypes.any
+
     }
 
     static defaultProps={
 
-    };
-
+    }
+    shouldComponentUpdate(){return true}
     render() {
         return (
             <div className="content">
                 {this.props.children}
             </div>
-        );
+        )
     }
 }

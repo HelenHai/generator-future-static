@@ -1,10 +1,10 @@
-import React, { Component ,PropTypes} from 'react';
-import { connect } from 'react-redux';
+import React, { Component,PropTypes } from 'react'
+import { connect } from 'react-redux'
 
-import Header from '../../components/web/header/Header.jsx';
-import Content from '../../components/web/content/Content.jsx';
-import {bindingMixin} from 'eg-tools';
-import * as IndexAction from '../../actions/index.es6';
+import Header from '../../components/web/header/Header.jsx'
+import Content from '../../components/web/content/Content.jsx'
+import {bindingMixin} from 'gfs-react-redux-twoway-binding'
+import * as IndexAction from '../../actions/index.es6'
 
 
 @connect(state => ({
@@ -12,20 +12,26 @@ import * as IndexAction from '../../actions/index.es6';
 }), IndexAction)
 @bindingMixin
 export default class Parcel extends Component {
+
+    static propTypes = {
+        children:PropTypes.object,
+        home:PropTypes.any
+    }
+
     constructor(props) {
-        super(props);
+        super(props)
 
-        //this.props.query();
+        //this.props.query()
 
-        this.setBinding('home');
+        this.setBinding('home')
     }
 
     static defaultProps={
 
-    };
+    }
 
     setValueByReducers(key,value){
-        this.manualChange(key,value);
+        this.manualChange(key,value)
     }
 
     bindPropsForElements(){
@@ -33,17 +39,17 @@ export default class Parcel extends Component {
 
             let opt = React.cloneElement(option,{
                 setValueByReducers:this.setValueByReducers
-            });
-            return opt;
+            })
+            return opt
 
-        },this);
+        },this)
 
-        return options;
+        return options
     }
-
+    shouldComponentUpdate(){return true}
     render() {
 
-        const {home,children} = this.props;
+        const {home} = this.props
 
         return (
             <div>
@@ -52,6 +58,6 @@ export default class Parcel extends Component {
                     {this.bindPropsForElements() }
                 </Content>
             </div>
-        );
+        )
     }
 }

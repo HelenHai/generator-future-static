@@ -1,13 +1,12 @@
-import { createReducer } from 'eg-tools';
-import Immutable from 'immutable';
+import { createReducer } from 'gfs-react-redux-twoway-binding'
+import Immutable from 'immutable'
 
-import {actionType} from '../constants/action-type.es6';
+// import { actionType } from '../constants/action-type.es6'
 
 const initialState = Immutable.fromJS({
-    username:'',
-    email:'',
-    content:''
-});
+    username: '',
+    email: '',
+    content: ''
+})
 
-export const msg = createReducer('msg',initialState, {
-});
+export const msg = createReducer('msg', initialState, {})

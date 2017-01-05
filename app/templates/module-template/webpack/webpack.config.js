@@ -5,24 +5,25 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var es3ifyPlugin = require('es3ify-webpack-plugin');
 
 var ent = {
-    example:[path.join(process.cwd(),'example/src/index.js') ]
+    example: [path.join(process.cwd(), 'example/src/index.js')]
 };
-ent[config.name] =[path.join(process.cwd(),'src/index.js')];
-module.exports ={
-    entry:ent,
-    resolve:{
+ent[config.name] = [path.join(process.cwd(), 'src/index.js')];
+module.exports = {
+    entry: ent,
+    resolve: {
         modulesDirectories: [
             'node_modules',
             'bower_components',
             'lib'
-        ]
+        ],
+        extensions: ["", ".js", ".ts", ".tsx"]
     },
-    output:{
+    output: {
         libraryTarget: 'umd',
-        path:path.join(process.cwd(),'dist'),
-        filename:'[name].js'
+        path: path.join(process.cwd(), 'dist'),
+        filename: '[name].js'
     },
-    externals:[{
+    externals: [{
         "jquery": {
             "root": "$",
             "commonjs2": "jquery",
@@ -54,16 +55,13 @@ module.exports ={
             amd: 'eagle-ui/lib/utils/Component'
         }
     }],
-    module:{
-        preLoaders: [
-            {
-                test: /\.(jsx|es6|js)$/,
-                loaders: ['eslint-loader'],
-                exclude: /node_modules/
-            }
-        ],
-        loaders:[
-            {
+    module: {
+        preLoaders: [{
+            test: /\.(jsx|es6|js)$/,
+            loaders: ['eslint-loader'],
+            exclude: /node_modules/
+        }],
+        loaders: [{
                 test: /\.js$/,
                 loaders: ['babel'],
                 exclude: /node_modules/
@@ -71,7 +69,7 @@ module.exports ={
             {
                 test: /\.less$/,
                 //style-loader!css-loader!less-loader
-                loader: ExtractTextPlugin.extract("style-loader","css-loader!less-loader")
+                loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
             },
             {
                 test: /\.css/,
@@ -83,34 +81,36 @@ module.exports ={
                 loader: "handlebars-loader"
             },
             {
-                test   : /\.(mp3|ogg|wav|swf)\??.*$/,
-                loader : 'file-loader'
+                test: /\.(mp3|ogg|wav|swf)\??.*$/,
+                loader: 'file-loader'
             },
             {
                 test: /\.(png|jpg|gif)$/,
                 loader: 'url?limit=35000'
-            }/*,
-             {
-             test: /\.less$/,
-             loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
-             },*/
+            }
+            /*,
+                         {
+                         test: /\.less$/,
+                         loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
+                         },*/
         ]
     },
     plugins: [
-        new ExtractTextPlugin(config.name+".css", {
+        new ExtractTextPlugin(config.name + ".css", {
             disable: false,
             allChunks: true
         }),
         new es3ifyPlugin(),
         new webpack.ProvidePlugin({
-            $:      "jquery",
+            $: "jquery",
             jQuery: "jquery"
-        })/*,
-         new webpack.DefinePlugin({
-         'process.env':{
-         'NODE_ENV': JSON.stringify('production')
-         }
-         })*/
+        })
+        /*,
+                 new webpack.DefinePlugin({
+                 'process.env':{
+                 'NODE_ENV': JSON.stringify('production')
+                 }
+                 })*/
         //new webpack.optimize.CommonsChunkPlugin('common.js')
         //new ExtractTextPlugin(path.join(config.name+'.css'))
     ]

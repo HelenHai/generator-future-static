@@ -7,43 +7,43 @@ var externals = require('./src/config/externals');
 var config = require('./src/config/base.config');
 var alias = require('./src/config/alias');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var CortexRecombinerPlugin=require('cortex-recombiner-webpack-plugin');
+var CortexRecombinerPlugin = require('cortex-recombiner-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var es3ifyPlugin = require('es3ify-webpack-plugin');
 
-var setExternals= function() {
-    var external=externals;
+var setExternals = function() {
+    var external = externals;
 
     return external;
 };
 
 //var baseFileDir = path.join(process.cwd(), 'src/');
-var htmlPlugin=[];
-var getEntry = function(){
+var htmlPlugin = [];
+var getEntry = function() {
     var webpackConfigEntry = {};
-    if(config.root.indexOf('.') !=-1 ){
-        webpackConfigEntry.bundle=[path.join(__dirname, config.root)];
-    }else{
-        var basedir =path.join(process.cwd(), config.root);
+    if (config.root.indexOf('.') != -1) {
+        webpackConfigEntry.bundle = [path.join(__dirname, config.root)];
+    } else {
+        var basedir = path.join(process.cwd(), config.root);
         var files = glob.sync(path.join(basedir, '*.jsx'));
 
         files.forEach(function(file) {
             var relativePath = path.relative(basedir, file);
-            generateHtml(relativePath.replace(/\.jsx/,'').toLowerCase() );
-            webpackConfigEntry[relativePath.replace(/\.jsx/,'').toLowerCase()] = [file];
+            generateHtml(relativePath.replace(/\.jsx/, '').toLowerCase());
+            webpackConfigEntry[relativePath.replace(/\.jsx/, '').toLowerCase()] = [file];
         });
     }
 
     return webpackConfigEntry;
 };
 
-function generateHtml(htmlName){
+function generateHtml(htmlName) {
     //var path = config.html+'/'+htmlName+'.html';
     htmlPlugin.push(
         new HtmlWebpackPlugin({
             title: htmlName,
             template: path.resolve(config.html, 'dev.html'),
-            filename: htmlName+'.html',
+            filename: htmlName + '.html',
             chunks: ['common', htmlName],
             inject: 'body'
         })
@@ -52,18 +52,18 @@ function generateHtml(htmlName){
 }
 
 
-function setCommonsChuck(){
-    var arr=[];
-    for(var item in entry){
+function setCommonsChuck() {
+    var arr = [];
+    for (var item in entry) {
         arr.push(item);
     }
     return arr;
 }
 
 var webpackConfig = {
-    entry: extend(getEntry(),entry||{}),
+    entry: extend(getEntry(), entry || {}),
     output: {
-        path:path.join(__dirname, config.output.replace('./','') ),
+        path: path.join(__dirname, config.output.replace('./', '')),
         filename: '[name].js',
         libraryTarget: "umd",
         publicPath: config.cdn,
@@ -72,21 +72,18 @@ var webpackConfig = {
     },
     cache: true,
     devtool: 'source-map',
-    externals:setExternals(),
+    externals: setExternals(),
     resolve: {
-        extensions: ['', '.js'],
-        alias:extend({},alias ||{})
+        extensions: ["", ".js", ".ts", ".tsx"],
+        alias: extend({}, alias || {})
     },
     module: {
-        preLoaders: [
-            {
-                test: /\.(jsx|es6|js)$/,
-                loaders: ['eslint-loader'],
-                exclude: /node_modules/
-            }
-        ],
-        loaders: [
-            {
+        preLoaders: [{
+            test: /\.(jsx|es6|js)$/,
+            loaders: ['eslint-loader'],
+            exclude: /node_modules/
+        }],
+        loaders: [{
                 test: /\.(jsx|es6)$/,
                 loaders: ['babel'],
                 exclude: /node_modules/
@@ -94,7 +91,7 @@ var webpackConfig = {
             {
                 test: /\.(less$)$/,
                 loader: ExtractTextPlugin.extract("css!postcss!less")
-                //loader: "style-loader!css-loader!less-loader"
+                    //loader: "style-loader!css-loader!less-loader"
             },
             {
                 test: /\.css$/,
@@ -102,11 +99,11 @@ var webpackConfig = {
             },
             {
                 test: /\.css\.module/,
-                loader:  ExtractTextPlugin.extract('css?-restructuring&modules&localIdentName=[local]___[hash:base64:5]!postcss')
+                loader: ExtractTextPlugin.extract('css?-restructuring&modules&localIdentName=[local]___[hash:base64:5]!postcss')
             },
             {
                 test: /\.less\.module/,
-                loader:  ExtractTextPlugin.extract('css?modules&localIdentName=[local]___[hash:base64:5]!postcss!less')
+                loader: ExtractTextPlugin.extract('css?modules&localIdentName=[local]___[hash:base64:5]!postcss!less')
 
             },
             {
@@ -120,8 +117,8 @@ var webpackConfig = {
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 loaders: [
-                    'url?limit=35000'/*,
-                    'image-webpack?progressive&optimizationLevel=3&interlaced=false'*/
+                    'url?limit=35000'
+                    /*'image-webpack?progressive&optimizationLevel=3&interlaced=false'*/
                 ]
             },
             {
@@ -134,7 +131,7 @@ var webpackConfig = {
         require('autoprefixer'),
         require('postcss-color-rebeccapurple')
     ],*/
-    postcss: function () {
+    postcss: function() {
         //处理css兼容性代码，无须再写-webkit之类的浏览器前缀
         return [
             require('postcss-initial')({
@@ -142,7 +139,8 @@ var webpackConfig = {
             }),
             require('autoprefixer')({
                 browsers: ['> 5%']
-            })];
+            })
+        ];
     },
     plugins: [
         //new webpack.optimize.UglifyJsPlugin(),
@@ -158,15 +156,16 @@ var webpackConfig = {
 
         }),
         new CortexRecombinerPlugin({
-            base:__dirname//path.resolve(__dirname,relativeToRootPath),//项目根目录的绝对路径
-        })/*,
-        new webpack.optimize.DedupePlugin()*/
+            base: __dirname //path.resolve(__dirname,relativeToRootPath),//项目根目录的绝对路径
+        })
+        /*,
+                new webpack.optimize.DedupePlugin()*/
     ]
 };
 
 console.log(config.env);
 
-if(config.env!='beta'&& config.env!='dev'){
+if (config.env != 'beta' && config.env != 'dev') {
     console.log('..........----pro----.............');
     webpackConfig.plugins.push(
         new webpack.optimize.UglifyJsPlugin({
@@ -177,7 +176,7 @@ if(config.env!='beta'&& config.env!='dev'){
     );
     webpackConfig.plugins.push(
         new webpack.DefinePlugin({
-            'process.env':{
+            'process.env': {
                 'NODE_ENV': JSON.stringify('production')
             }
         })
