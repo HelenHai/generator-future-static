@@ -3,10 +3,12 @@ var webpack = require('webpack');
 var config = require('../package.json');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var es3ifyPlugin = require('es3ify-webpack-plugin');
+var glob = require('glob');
 
-var ent = {
+/*var ent = {
     example: [path.join(process.cwd(), 'example/src/index.js')]
-};
+};*/
+var ent = {};
 ent[config.name] = [path.join(process.cwd(), 'src/index.js')];
 module.exports = {
     entry: ent,

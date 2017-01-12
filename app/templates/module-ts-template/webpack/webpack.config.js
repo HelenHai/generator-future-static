@@ -4,9 +4,9 @@ var config = require('../package.json');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var es3ifyPlugin = require('es3ify-webpack-plugin');
 
-var ent = {
+/*var ent = {
     example:[path.join(process.cwd(),'example/src/index.js') ]
-};
+};*/
 ent[config.name] =[path.join(process.cwd(),'src/index.ts')];
 module.exports ={
     entry:ent,
