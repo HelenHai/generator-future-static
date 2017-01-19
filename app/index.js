@@ -324,7 +324,7 @@ module.exports = generators.Base.extend({
                     },
                     "peerDependencies": {},
                     "devDependencies": {
-                        "gfs-doc": "^0.1.16",
+                        "gfs-doc": "^0.1.26",
                         "gulp-run-sequence": "^0.3.2",
                         "internal-ip": "^1.2.0",
                         "babel": "^6.0.15",
@@ -370,10 +370,10 @@ module.exports = generators.Base.extend({
                         "del": "^2.2.2"
                     },
                     "scripts": {
-                        "build": "node_modules/.bin/gulp && node_modules/.bin/gulp min && npm run doc",
+                        "build": "node_modules/.bin/gulp && node_modules/.bin/gulp min",
                         "test": "karma start",
                         "demo": "node_modules/.bin/gulp demo",
-                        "doc": "gfsdoc ||node_modules/.bin/gfsdoc",
+                        "doc": "gfsdoc || node_modules/.bin/gfsdoc",
                         "start": "npm run demo",
                         "prepublish": " npm run build"
                     }
@@ -390,7 +390,7 @@ module.exports = generators.Base.extend({
                     },
                     "peerDependencies": {},
                     "devDependencies": {
-                        "gfs-doc": "^0.1.16",
+                        "gfs-doc": "^0.1.26",
                         "gulp-run-sequence": "^0.3.2",
                         "awesome-typescript-loader": "^3.0.0-beta.17",
                         "babel": "^6.0.15",
@@ -440,10 +440,10 @@ module.exports = generators.Base.extend({
                         "webpack-dev-server": "^1.10.1"
                     },
                     "scripts": {
-                        "build": "tsc && node_modules/.bin/gulp && node_modules/.bin/gulp min && npm run doc",
+                        "build": "tsc && node_modules/.bin/gulp && node_modules/.bin/gulp min",
                         "test": "karma start",
                         "demo": "node_modules/.bin/gulp demo",
-                        "doc": "gfsdoc ||node_modules/.bin/gfsdoc",
+                        "doc": "gfsdoc || node_modules/.bin/gfsdoc",
                         "start": "npm run demo",
                         "prepublish": " npm run build"
                     }
