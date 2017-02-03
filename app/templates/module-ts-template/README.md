@@ -10,7 +10,7 @@
 - git fetch
 - git pull origin master
 
-- 全局安装smartDoc 用于生成文档
+- 全局安装gfs-doc 用于生成文档
 
 ## Command
 

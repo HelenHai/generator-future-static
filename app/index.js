@@ -49,9 +49,9 @@ module.exports = generators.Base.extend({
             if (isUpdated) return;
 
             notifier.notify({
-                title: 'generator-trade-static',
+                title: 'generator-future-static',
                 subtitle: '已有新版本,正在更新...',
-                message: '如果更新失败，请手动更新\n执行 npm i -g generator-trade-static',
+                message: '如果更新失败，请手动更新\n执行 npm i -g generator-future-static',
                 contentImage: path.resolve(__dirname, 'future-logo.png'),
                 // icon:path.resolve(__dirname,'peon.jpg'),
                 sound: true, // Only Notification Center or Windows Toasters
@@ -65,9 +65,9 @@ module.exports = generators.Base.extend({
             selfupdate.update(packageJSON, function(error, version) {
                 if (error) throw error;
                 notifier.notify({
-                    title: 'generator-trade-static',
+                    title: 'generator-future-static',
                     subtitle: '更新完毕',
-                    message: '请重新运行本应用\n执行 yo trade-static',
+                    message: '请重新运行本应用\n执行 yo future-static',
                     contentImage: path.resolve(__dirname, 'future-logo.png'),
                     // icon:path.resolve(__dirname,'peon.jpg'),
                     sound: true, // Only Notification Center or Windows Toasters
@@ -92,6 +92,7 @@ module.exports = generators.Base.extend({
                 type: 'list',
                 choices: [
                     'webpack+react+redux+cortex',
+                    'webpack+react+mvc',
                     'webpack+jquery+handlebars+cortex',
                     'module-template(jquery or react)',
                     'module-ts-template'
@@ -164,7 +165,8 @@ module.exports = generators.Base.extend({
                 "webpack+react+redux+cortex": "webpack-react-redux",
                 "webpack+jquery+handlebars+cortex": "webpack-jquery-handlebars",
                 'module-template(jquery or react)': 'module-template',
-                "module-ts-template": 'module-ts-template'
+                "module-ts-template": 'module-ts-template',
+                "webpack+react+mvc":'webpack-react-mvc'
             };
             this.currentDir = map[this.props.boilerplate] || 'webpack+react+redux+cortex';
         },
@@ -247,6 +249,86 @@ module.exports = generators.Base.extend({
                         "eslint-loader": "^1.5.0",
                         "eslint-plugin-react": "^6.2.0",
                         "es3ify-webpack-plugin": "0.0.1"
+                    },
+                    "scripts": {
+                        "demo": "node_modules/.bin/gulp ",
+                        "build": "node_modules/.bin/gulp ",
+                        "dev": "node_modules/.bin/gulp dev",
+                        "start": "node_modules/.bin/gulp dev"
+                    }
+                },
+                "webpack+react+mvc":{
+                    "dependencies": {
+                        "babel-polyfill": "^6.3.14",
+                        "classnames": "^2.2.0",
+                        "console-polyfill": "^0.2.3",
+                        "eagle-ui": "^1.4.5",
+                        "es5-shim": "^4.5.9",
+                        "extend": "^3.0.0",
+                        "gfs-react-mvc": "^0.1.5",
+                        "gfs-react-redux-twoway-binding": "^0.1.0",
+                        "gfs-react-tools": "^1.0.4",
+                        "history": "^1.13.1",
+                        "immutable": "^3.7.5",
+                        "lodash": "^3.10.1",
+                        "react": "^0.14.3",
+                        "react-dom": "~0.14.8",
+                        "react-redux": "^4.0.0",
+                        "react-router": "^1.0.0",
+                        "redux": "^3.0.4",
+                        "redux-thunk": "^1.0.0"
+                    },
+                    "devDependencies": {
+                        "autoprefixer": "^6.3.7",
+                        "autoprefixer-loader": "^3.2.0",
+                        "babel": "^6.0.15",
+                        "babel-core": "^5.8.23",
+                        "babel-eslint": "^6.1.2",
+                        "babel-loader": "^5.3.2",
+                        "babel-preset-es2015": "^6.1.18",
+                        "babel-preset-react": "^6.1.18",
+                        "babel-preset-stage-0": "^6.1.18",
+                        "cortex-recombiner": "^1.0.13",
+                        "cortex-recombiner-webpack-plugin": "^1.0.3",
+                        "css-loader": "0.17.0",
+                        "es3ify-loader": "^0.2.0",
+                        "es3ify-webpack-plugin": "0.0.1",
+                        "eslint": "^3.4.0",
+                        "eslint-loader": "^1.5.0",
+                        "eslint-plugin-react": "^6.2.0",
+                        "extend": "^3.0.0",
+                        "extract-text-webpack-plugin": "^0.8.2",
+                        "file-loader": "^0.9.0",
+                        "glob": "^7.0.5",
+                        "gulp": "^3.9.0",
+                        "gulp-babel": "^5.3.0",
+                        "gulp-flatten": "^0.3.1",
+                        "gulp-h-manifest": "^1.0.2",
+                        "gulp-htmlincluder": "^0.1.0",
+                        "gulp-less": "^3.0.3",
+                        "gulp-load-plugins": "^1.0.0-rc.1",
+                        "gulp-minify-css": "^1.2.1",
+                        "gulp-open": "^2.0.0",
+                        "gulp-rename": "^1.2.2",
+                        "gulp-rimraf": "^0.2.0",
+                        "gulp-util": "^3.0.6",
+                        "gulp-webpack": "^1.5.0",
+                        "handlebars-loader": "^1.3.0",
+                        "html-webpack-plugin": "^2.22.0",
+                        "internal-ip": "^1.2.0",
+                        "less": "^2.5.1",
+                        "less-loader": "^2.2.0",
+                        "postcss-color-rebeccapurple": "^2.0.0",
+                        "postcss-initial": "^1.5.2",
+                        "postcss-loader": "^0.9.1",
+                        "raw-loader": "^0.5.1",
+                        "react-hot-loader": "^1.3.0",
+                        "run-sequence": "^1.1.5",
+                        "style-loader": "^0.12.3",
+                        "url-loader": "^0.5.7",
+                        "webpack": "^1.12.1",
+                        "webpack-bower-resolver": "0.0.1",
+                        "webpack-dev-server": "^1.10.1"
                     },
                     "scripts": {
                         "demo": "node_modules/.bin/gulp ",
@@ -576,8 +658,13 @@ module.exports = generators.Base.extend({
                 this.spawnCommandSync('npm', ['install'], opt);
                 this.spawnCommandSync('npm', ['start'], opt);
                 break;
+            case "webpack+react+mvc":
+                this.spawnCommandSync('npm', ['install'], opt);
+                this.spawnCommandSync('npm', ['start'], opt);
+                break;
             default:
                 break;
         }
+
     }
 });

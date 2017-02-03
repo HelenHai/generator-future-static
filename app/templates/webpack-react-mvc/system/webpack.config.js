@@ -2,12 +2,11 @@ var webpack = require('webpack');
 var path = require('path');
 var glob = require('glob');
 var extend = require('extend');
-var entry = require('./src/config/vendor');
-var externals = require('./src/config/externals');
-var config = require('./src/config/base.config');
-var alias = require('./src/config/alias');
+var entry = require('./config/vendor');
+var externals = require('./config/externals');
+var config = require('./config/base.config');
+var alias = require('./config/alias');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var CortexRecombinerPlugin = require('cortex-recombiner-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var es3ifyPlugin = require('es3ify-webpack-plugin');
 
@@ -29,7 +28,7 @@ var getEntry = function() {
 
         files.forEach(function(file) {
             var relativePath = path.relative(basedir, file);
-            generateHtml(relativePath.replace(/\.jsx/, '').toLowerCase());
+            // generateHtml(relativePath.replace(/\.jsx/, '').toLowerCase());
             webpackConfigEntry[relativePath.replace(/\.jsx/, '').toLowerCase()] = [file];
         });
     }
@@ -39,7 +38,7 @@ var getEntry = function() {
 
 function generateHtml(htmlName) {
     //var path = config.html+'/'+htmlName+'.html';
-    htmlPlugin.push(
+    /*htmlPlugin.push(
         new HtmlWebpackPlugin({
             title: htmlName,
             template: path.resolve(config.html, 'dev.html'),
@@ -48,7 +47,7 @@ function generateHtml(htmlName) {
             inject: 'body'
         })
 
-    );
+    );*/
 }
 
 
@@ -63,7 +62,7 @@ function setCommonsChuck() {
 var webpackConfig = {
     entry: extend(getEntry(), entry || {}),
     output: {
-        path: path.join(__dirname, config.output.replace('./', '')),
+        path: path.join(process.cwd(), config.output.replace('./', '')),
         filename: '[name].js',
         libraryTarget: "umd",
         publicPath: config.cdn,
@@ -154,9 +153,6 @@ var webpackConfig = {
             names: setCommonsChuck(),
             minChunks: Infinity
 
-        }),
-        new CortexRecombinerPlugin({
-            base: __dirname //path.resolve(__dirname,relativeToRootPath),//项目根目录的绝对路径
         })
         /*,
                 new webpack.optimize.DedupePlugin()*/

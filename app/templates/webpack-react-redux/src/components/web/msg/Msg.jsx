@@ -1,7 +1,7 @@
 import React, { Component ,PropTypes} from 'react'
 import {Grid,Row,Col,Panel,PanelHeader,PanelContent,ValidatorPanel,Input,FormGroup,Button,Dialog} from 'eagle-ui'
 
-import {bindingMixin} from 'eg-tools'
+import {bindingMixin} from 'gfs-react-redux-twoway-binding'
 
 import SuccessDialog from './SuccessDialog.jsx'
 

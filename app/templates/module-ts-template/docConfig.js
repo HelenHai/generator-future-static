@@ -1,4 +1,4 @@
-var config = require('package.json');
+var config = require('./package.json');
 
 module.exports = {
     //扫描的文件路径
@@ -29,7 +29,7 @@ module.exports = {
         //导航信息
         navs: [{
             name: "主页",
-            url: ""
+            url: "index.html"
         }]
     },
     //demo页面需要加载的js库
