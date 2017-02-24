@@ -266,7 +266,6 @@ module.exports = generators.Base.extend({
                         "es5-shim": "^4.5.9",
                         "extend": "^3.0.0",
                         "gfs-react-dm": "^1.0.1",
-                        "gfs-react-tools": "^1.0.4",
                         "history": "^1.13.1",
                         "lodash": "^3.10.1",
                         "react": "^0.14.3",
@@ -656,7 +655,7 @@ module.exports = generators.Base.extend({
                 this.spawnCommandSync('npm', ['install'], opt);
                 this.spawnCommandSync('npm', ['start'], opt);
                 break;
-            case "webpack+react+mvc":
+            case "webpack+react":
                 this.spawnCommandSync('npm', ['install'], opt);
                 this.spawnCommandSync('npm', ['start'], opt);
                 break;
