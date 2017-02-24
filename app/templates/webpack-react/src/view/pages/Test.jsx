@@ -1,5 +1,5 @@
 import React, { Component /*,PropTypes*/} from 'react'
-import {View,page} from 'gfs-react-mvc'
+import {View,page} from 'gfs-react-dm'
 
 import TestControl from '@controller/TestControl'
 import HeaderCompoent from '@component/test/Header'

@@ -35,7 +35,6 @@
         "react/no-deprecated": "error",
         "react/no-danger": "warn",
         "react/prefer-es6-class": "warn",
-        "react/prop-types": "warn",
         "react/self-closing-comp": "warn",
         "react/jsx-no-duplicate-props": "warn",
         "react/jsx-no-comment-textnodes": "error",

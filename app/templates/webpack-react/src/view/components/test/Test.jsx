@@ -11,11 +11,7 @@ export default class Test extends Component{
 
     getValue(value){
         //把参数传递给ajax
-        this.props.getBooks({
-            body:{
-                id:value
-            }
-        })
+        this.props.getBooks(value,this.props.testmodel.get('bookList').toJS() )
     }
     query(){
         return this.props.testmodel.get('bookTypes').toJS()
@@ -24,7 +20,7 @@ export default class Test extends Component{
         this.props.queryBookTypes()
     }
     render(){
-        let books = this.props.testmodel.get('books').toJS() 
+        let books = this.props.testmodel.get('books').toJS()
         return (
             <Grid fluid>
                 <Row>
@@ -42,7 +38,7 @@ export default class Test extends Component{
                 </Row>
                 <Row>
                     <Col sm={12} end>
-                        <Books books ={books}   />
+                        <Books {...this.props} books ={books}   />
                     </Col>
                 </Row>
 

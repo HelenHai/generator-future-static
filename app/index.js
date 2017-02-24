@@ -92,7 +92,7 @@ module.exports = generators.Base.extend({
                 type: 'list',
                 choices: [
                     'webpack+react+redux+cortex',
-                    'webpack+react+mvc',
+                    'webpack+react',
                     'webpack+jquery+handlebars+cortex',
                     'module-template(jquery or react)',
                     'module-ts-template'
@@ -166,7 +166,7 @@ module.exports = generators.Base.extend({
                 "webpack+jquery+handlebars+cortex": "webpack-jquery-handlebars",
                 'module-template(jquery or react)': 'module-template',
                 "module-ts-template": 'module-ts-template',
-                "webpack+react+mvc":'webpack-react-mvc'
+                "webpack+react":'webpack-react'
             };
             this.currentDir = map[this.props.boilerplate] || 'webpack+react+redux+cortex';
         },
@@ -257,7 +257,7 @@ module.exports = generators.Base.extend({
                         "start": "node_modules/.bin/gulp dev"
                     }
                 },
-                "webpack+react+mvc":{
+                "webpack+react":{
                     "dependencies": {
                         "babel-polyfill": "^6.3.14",
                         "classnames": "^2.2.0",
@@ -265,11 +265,9 @@ module.exports = generators.Base.extend({
                         "eagle-ui": "^1.4.5",
                         "es5-shim": "^4.5.9",
                         "extend": "^3.0.0",
-                        "gfs-react-mvc": "^0.1.5",
-                        "gfs-react-redux-twoway-binding": "^0.1.0",
+                        "gfs-react-dm": "^1.0.1",
                         "gfs-react-tools": "^1.0.4",
                         "history": "^1.13.1",
-                        "immutable": "^3.7.5",
                         "lodash": "^3.10.1",
                         "react": "^0.14.3",
                         "react-dom": "~0.14.8",

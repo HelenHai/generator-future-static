@@ -1,12 +1,6 @@
 import React, { Component /*,PropTypes*/} from 'react'
 import {Row,Col,Table,Tr,Td,Th,Button} from 'eagle-ui'
-// import {} from 'gfs-react-redux-twoway-binding'
-import {View} from 'gfs-react-mvc'
-import TestControl from '../../../controller/TestControl'
-import '../../../utils/function'
-import Immutable from 'immutable'
 
-@View(TestControl)
 export default class Books extends Component{
 
     constructor(props){
@@ -17,29 +11,33 @@ export default class Books extends Component{
         //this.props.updateBook(index)
         if(index>=0){
             
-            this.manualChange('book',Immutable.fromJS(this.props.books[index] ) )
+            this.props.testControlUpdate('book',this.props.books[index] )
         }
-        this.manualChange('updateIndex',index )
+        this.props.testControlUpdate('updateIndex',index )
+    }
+    onchange(key,e){
+        this.props.testControlUpdate(key,e.target.value )
     }
 
     getUpdatePanel(item){
         let index = this.props.testmodel.get('updateIndex')
+        let book = this.props.testmodel.get('book').toJS()
         return (
             <Tr key={item.name}>
-                <Td><input className='test-input' valueLink={this.binding('book.name')} /></Td>
-                <Td><input className='test-input' valueLink={this.binding('book.author')} /></Td>
-                <Td><input className='test-input' valueLink={this.binding('book.press')} /></Td>
-                <Td><input className='test-input' valueLink={this.binding('book.price')} /></Td>
-                <Td><input className='test-input' valueLink={this.binding('book.date')} /></Td>
-                <Td><input className='test-input' valueLink={this.binding('book.description')} /></Td>
+                <Td><input className='test-input' onChange={this.onchange.bind(this,'book.name')} value={book.name} /></Td>
+                <Td><input className='test-input' onChange={this.onchange.bind(this,'book.author')} value={book.author} /></Td>
+                <Td><input className='test-input' onChange={this.onchange.bind(this,'book.press')} value={book.press} /></Td>
+                <Td><input className='test-input' onChange={this.onchange.bind(this,'book.price')} value={book.price} /></Td>
+                <Td><input className='test-input' onChange={this.onchange.bind(this,'book.date')} value={book.date} /></Td>
+                <Td><input className='test-input' onChange={this.onchange.bind(this,'book.description')} value={book.description} /></Td>
                 <Td><Button onClick={()=>{
-                    this.props.updateBook(index )
+                    this.props.updateBook(index,book )
                 }}>保存</Button>  <Button onClick={this.checkUpdatePanel.bind(this,-1)}>取消</Button></Td>
             </Tr>
         )
     }
     getDataPanel(item,index){
-        
+
         return (
             <Tr key={item.name}>
                 <Td>{item.name}</Td>

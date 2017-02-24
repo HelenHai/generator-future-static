@@ -1,5 +1,5 @@
-import {Model} from 'gfs-react-mvc'
-import Immutable from 'immutable'
+import {Model} from 'gfs-react-dm'
+//import Immutable from 'immutable'
 
 @Model
 export default class TestModel {
@@ -9,10 +9,7 @@ export default class TestModel {
     static book={}
     static updateIndex=-1
 
-    constructor(){
-
-    }
-    static queryBookTypes(data, action){
+   /* static queryBookTypes(data, action){
         
         if(action.data){
             return data.merge(Immutable.fromJS(action.data) )
@@ -28,5 +25,5 @@ export default class TestModel {
     static delBook(data,action){
         
         return data.deleteIn(['books',action.data.index] )
-    }
+    }*/
 }

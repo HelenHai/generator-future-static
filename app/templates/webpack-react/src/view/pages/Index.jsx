@@ -1,6 +1,6 @@
 import React, { Component /*,PropTypes*/} from 'react'
 import { Redirect, Router, Route } from 'react-router'
-import {View,page} from 'gfs-react-mvc'
+import {View,page} from 'gfs-react-dm'
 import History from 'history/lib/createHashHistory'
 import TestContainer from './Test'
 import TestControl from '@controller/TestControl'
