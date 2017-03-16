@@ -183,7 +183,7 @@ module.exports = generators.Base.extend({
                     "dependencies": {
                         "babel-polyfill": "^6.3.14",
                         "classnames": "^2.2.0",
-                        "eagle-ui": "^1.4.5",
+                        "eagle-ui": "^4.0.0",
                         "es5-shim": "^4.5.9",
                         "extend": "^3.0.0",
                         "history": "^1.13.1",
@@ -262,7 +262,7 @@ module.exports = generators.Base.extend({
                         "babel-polyfill": "^6.3.14",
                         "classnames": "^2.2.0",
                         "console-polyfill": "^0.2.3",
-                        "eagle-ui": "^1.4.5",
+                        "eagle-ui": "^4.0.0",
                         "es5-shim": "^4.5.9",
                         "extend": "^3.0.0",
                         "gfs-react-dm": "^1.0.1",
