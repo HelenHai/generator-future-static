@@ -11,12 +11,12 @@ export default class Books extends Component{
         //this.props.updateBook(index)
         if(index>=0){
             
-            this.props.testControlUpdate('book',this.props.books[index] )
+            this.props.updateBookModel('book',this.props.books[index] )
         }
-        this.props.testControlUpdate('updateIndex',index )
+        this.props.updateBookModel('updateIndex',index )
     }
     onchange(key,e){
-        this.props.testControlUpdate(key,e.target.value )
+        this.props.updateBookModel(key,e.target.value )
     }
 
     getUpdatePanel(item){

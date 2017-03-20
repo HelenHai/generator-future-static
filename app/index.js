@@ -265,7 +265,7 @@ module.exports = generators.Base.extend({
                         "eagle-ui": "^4.0.0",
                         "es5-shim": "^4.5.9",
                         "extend": "^3.0.0",
-                        "gfs-react-dm": "^1.0.1",
+                        "gfs-react-dm": "^1.0.2",
                         "history": "^1.13.1",
                         "lodash": "^3.10.1",
                         "react": "^0.14.3",

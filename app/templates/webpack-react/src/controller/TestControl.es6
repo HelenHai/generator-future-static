@@ -8,27 +8,30 @@ export default class TestControl{
 
         return (dispatch)=>{
             fetch('/test').then((data)=>{
-                dispatch(this.testControlUpdate(data.data) )
+                dispatch(this.update(data.data) )
             })
         }
     }
 
     static getBooks(index,bookList){
         //根据此类生成的update方法
-        return this.testControlUpdate('books',bookList[index] )
+        return this.update('books',bookList[index] )
     }
     static updateBook(index,value){
 
         return (dispatch)=>{
             //根据此类生成的update方法
-            dispatch(this.testControlUpdate(`books.${index}`,value))
+            dispatch(this.update(`books.${index}`,value))
             //根据此类生成的update方法
-            dispatch(this.testControlUpdate('updateIndex',-1) )
+            dispatch(this.update('updateIndex',-1) )
         }
 
     }
     static delBook(index){
         //根据此类生成的del方法
-        return this.testControlDel(`books.${index}`)
+        return this.del(`books.${index}`)
+    }
+    static updateBookModel(key,value){
+        return this.update(key,value)
     }
 }
