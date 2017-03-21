@@ -22,7 +22,7 @@ export default class Content extends Component {
     shouldComponentUpdate(){return true}
     render() {
         return (
-            <div className="content">
+            <div className="box-content">
                 {this.props.children}
             </div>
         )
