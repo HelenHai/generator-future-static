@@ -3,6 +3,8 @@ import {Model} from 'gfs-react-dm'
 
 @Model
 export default class TestModel {
+    //此字段必须要有
+    static __name = 'test'
 
     static bookTypes=[]
     static books=[]
