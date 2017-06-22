@@ -56,7 +56,7 @@ module.exports.server= function(){
     new WebpackDevServer(compiler, {
         publicPath: "/dist/",
         contentBase:path.join(process.cwd(),'examples/'),
-        disableHostCheck: true,
+        
         hot: true,
         inline:true,
         historyApiFallback: true,
