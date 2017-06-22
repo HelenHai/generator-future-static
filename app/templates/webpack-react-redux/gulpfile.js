@@ -74,7 +74,7 @@ gulp.task('default', function(){
   runSequence('clean','webpack','html');
 });
 gulp.task('dev', ['hot', 'open']);
-
+gulp.task('demo', ['hot', 'open']);
 /*
 
 gulp.task('watch', function() {
