@@ -61,6 +61,7 @@ module.exports= function(){
     new WebpackDevServer(compiler, {
         publicPath: '',
         contentBase: config.html,
+        disableHostCheck: true,
         hot: true,
         inline:true,
         historyApiFallback: true,
